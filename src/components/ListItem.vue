@@ -1,42 +1,41 @@
 // ListItem.vue
 
 <template>
-    <div>
-        <h1>List Item</h1>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Item Code</th>
-                <th>Item Name</th>
-                <th>Item Price</th>
-                <th>Quantity</th>
-                <th>Unit Amount</th>
-                <th>Total Amount</th>
-                <th>Supplier</th>
-                <th>Purchased Date</th>
-                <th colspan="2">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="item of items" :key="item['.key']">
-                <td>{{ item.code }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.price }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>{{ item.unitAmount }}</td>
-                <td>{{ item.totalAmount }}</td>
-                <td>{{ item.supplier }}</td>
-                <td>{{ item.purchasedDate }}</td>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>List Item</h3>
+            </div>
+            <div class="card-body">
+                <div>
+                    <b-pagination
+                            v-model="currentPage"
+                            :per-page="perPage"
+                            aria-controls="my-table"
+                            :total-rows="rows"
+                    ></b-pagination>
+                    <b-table
+                            :items="items"
+                            :fields="fields"
+                            :sort-by.sync="sortBy"
+                            :sort-desc.sync="sortDesc"
+                            :per-page="perPage"
+                            :current-page="currentPage"
+                            sort-icon-left
+                            responsive="sm"
+                    >
+                        <template v-slot:cell(sn)="data">
+                            {{data.index + 1}}
+                        </template>
+                        <template v-slot:cell(actions)="data">
+                            <button @click="editItem(data.item.key)" class="btn btn-warning">Edit</button>
+                            <button @click.prevent="deleteItem(data.item.key)" class="btn btn-danger">Delete</button>
+                        </template>
 
-                <td>
-                    <router-link :to="{ name: 'Edit', params: {id: item.key} }" class="btn btn-warning">
-                        Edit
-                    </router-link>
-                    <button @click.prevent="deleteItem(item.key)" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                    </b-table>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -50,7 +49,23 @@
         },
         data() {
             return {
-                items: []
+                perPage: 5,
+                currentPage: 1,
+                items: [],
+                fields: [
+                    { key: 'sn', label: 'SN' },
+                    { key: 'code', sortable: true },
+                    { key: 'name', sortable: true },
+                    { key: 'quantity', sortable: true },
+                    { key: 'unit', sortable: false },
+                    { key: 'unitAmount', sortable: false },
+                    { key: 'totalAmount', sortable: true },
+                    { key: 'supplier', sortable: true },
+                    { key: 'purchasedDate', sortable: true },
+                    { key: 'actions', label: 'Actions'},
+                ],
+                sortBy: 'code',
+                sortDesc: false,
             }
         },
         created() {
@@ -61,11 +76,11 @@
                         key: doc.id,
                         code: doc.data().code,
                         name: doc.data().name,
-                        price: doc.data().price,
-                        quantity: doc.data().price,
-                        unitAmount: doc.data().price,
-                        totalAmount: doc.data().price,
-                        supplier: doc.data().price,
+                        quantity: doc.data().quantity,
+                        unit: doc.data().unit,
+                        unitAmount: doc.data().unitAmount,
+                        totalAmount: doc.data().totalAmount,
+                        supplier: doc.data().supplier,
                         purchasedDate: doc.data().purchasedDate
 
                     })
@@ -83,6 +98,14 @@
                             console.error(error);
                         })
                 }
+            },
+            editItem(id){
+                this.$router.push(`/edit/${id}`);
+            }
+        },
+        computed: {
+            rows() {
+                return this.items.length
             }
         }
     }

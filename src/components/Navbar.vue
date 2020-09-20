@@ -28,7 +28,10 @@
             <li class="nav-item">
               <router-link :to="{ name: 'List' }" class="nav-link">List Item</router-link>
             </li>
-            <div class="nav-item">{{user.data.displayName}}</div>
+            <li class="nav-item">
+              <router-link :to="{ name: 'Billing' }" class="nav-link">Billing</router-link>
+            </li>
+<!--            <div class="nav-item">{{user.data.displayName}}</div>-->
             <li class="nav-item">
               <a class="nav-link" @click.prevent="signOut">Sign out</a>
             </li>
