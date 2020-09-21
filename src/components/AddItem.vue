@@ -29,7 +29,7 @@
                         <div slot-scope="{ errors }">
                         <div class="form-group">
                             <label>Quantity:</label>
-                            <input type="number" v-model="newItem.quantity" class="form-control" @click="calculateTotalAmount"/>
+                            <input type="number" v-model="newItem.quantity" class="form-control" @change="calculateTotalAmount"/>
                                 <p>{{ errors[0] }}</p></div>
                         </div>
                     </ValidationProvider>
@@ -47,7 +47,7 @@
                         <div slot-scope="{ errors }">
                     <div class="form-group">
                         <label>Rate:</label>
-                        <input type="number" v-model="newItem.unitAmount" class="form-control" @click="calculateTotalAmount"/>
+                        <input type="number" v-model="newItem.unitAmount" class="form-control" @change="calculateTotalAmount"/>
                             <p>{{ errors[0] }}</p></div>
                     </div>
                     </ValidationProvider>
@@ -159,11 +159,16 @@
 
                     const itemAlreadyExists =  await db.collection("items").where("code", "==", `${this.newItem.code}`).limit(1).get().then((query) => {
                         const thing = query.docs[0];
-                        if (thing.exists === true) {
-                            return true;
-                        }else {
+                        if (thing) {
+                            if (thing.exists === true) {
+                                return true;
+                            }else {
+                                return false;
+                            }
+                        } else {
                             return false;
                         }
+
                     }).catch((e) => console.log('error', e));
 
 
