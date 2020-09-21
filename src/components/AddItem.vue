@@ -158,7 +158,7 @@
                     { value: '23', text: '23' },
                     { value: '24', text: '24' },
                     { value: '25', text: '25' },
-                    { value: '25', text: '25' },
+                    { value: '26', text: '26' },
                 ]
             }
         },
