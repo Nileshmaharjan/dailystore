@@ -143,12 +143,7 @@
                     customerMobileNumber: '',
                     customerId: '',
                 },
-                options: [
-                    { value: null, text: 'Please select an option' },
-                    { value: '1', text: 'PCS' },
-                    { value: '2', text: 'Boxes' },
-                    { value: '3', text: 'Sacs' }
-                ],
+                options: [],
 
                 codeOptions: [
                     { value: null, text: 'Please select an option' },
@@ -184,10 +179,24 @@
 
 
         mounted() {
+            this.setUnitOptions();
             this.newBillingItem.purchasedDate = new Date().toISOString().slice(0,10);
         },
         methods: {
 
+            setUnitOptions() {
+                const self = this;
+                const docRef = db.collection("UnitType");
+
+                docRef.get().then(function(snapshot) {
+                    snapshot.docs.map((doc)=>{
+                        self.options.push(doc.data())
+                    })
+                }).catch(function(error) {
+                    console.log("Error getting document:", error);
+                });
+
+            },
             async getItemDetails() {
                 let self = this;
                   db.collection("items").where("code", "==", `${this.newBillingItem.code}`).get()

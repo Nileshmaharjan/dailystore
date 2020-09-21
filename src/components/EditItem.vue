@@ -121,10 +121,6 @@
                     expiryDate: '',
                 },
                 options: [
-                    { value: null, text: 'Please select an option' },
-                    { value: '1', text: 'PCS' },
-                    { value: '2', text: 'Boxes' },
-                    { value: '3', text: 'Sacs' }
                 ],
 
                 codeOptions: [
@@ -168,7 +164,24 @@
             })
         },
 
+        mounted() {
+            this.setUnitOptions();
+        },
+
         methods: {
+            setUnitOptions() {
+                const self = this;
+                const docRef = db.collection("UnitType");
+
+                docRef.get().then(function(snapshot) {
+                    snapshot.docs.map((doc)=>{
+                        self.options.push(doc.data())
+                    })
+                }).catch(function(error) {
+                    console.log("Error getting document:", error);
+                });
+
+            },
             async updateItem(event) {
                 event.preventDefault()
                 const isValid = await this.$refs.adForm.validate();
