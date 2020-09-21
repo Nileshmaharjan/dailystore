@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./routes/index";
 import * as firebase from "firebase";
 import store from "./store";
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import { BootstrapVue, IconsPlugin,BootstrapVueIcons } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { ValidationProvider } from 'vee-validate';
@@ -39,6 +39,7 @@ Vue.component('ValidationProvider', ValidationProvider);
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 

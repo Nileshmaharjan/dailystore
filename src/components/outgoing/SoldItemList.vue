@@ -1,10 +1,10 @@
 // ListItem.vue
 
 <template>
-    <div class="container" style="padding: 0" >
+    <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3>List Item</h3>
+                <h3>Billing List</h3>
             </div>
             <div class="card-body">
                 <div>
@@ -27,6 +27,7 @@
                         <template v-slot:cell(sn)="data">
                             {{data.index + 1}}
                         </template>
+
                         <template v-slot:cell(actions)="data">
                             <button>
                                 <b-icon @click="editItem(data.item.key)" icon="pencil"></b-icon>
@@ -45,7 +46,7 @@
 
 <script>
 
-    import { db } from '../config/db';
+    import { db } from '../../config/db';
 
     export default {
         components: {
@@ -57,15 +58,16 @@
                 currentPage: 1,
                 items: [],
                 fields: [
-                    { key: 'sn', label: 'SN', align: 'center' },
-                    { key: 'code', sortable: true, align: 'center'},
-                    { key: 'name', sortable: true, align: 'center' },
-                    { key: 'quantity', sortable: true, align: 'center' },
-                    { key: 'unit', sortable: false, align: 'center' },
-                    { key: 'unitAmount', label: 'Rate', sortable: false, align: 'center'},
-                    { key: 'totalAmount', sortable: true, align: 'center' },
-                    { key: 'supplier', sortable: true, align: 'center' },
-                    { key: 'purchasedDate', sortable: true, align: 'center' },
+                    { key: 'sn', label: 'SN' },
+                    { key: 'code', sortable: true },
+                    { key: 'name', sortable: true },
+                    { key: 'quantity', sortable: true },
+                    { key: 'unit', sortable: false },
+                    { key: 'unitAmount', label: 'Rate', sortable: false },
+                    { key: 'discount', sortable: false },
+                    { key: 'totalAmount', sortable: true },
+                    { key: 'customerName', sortable: true },
+                    { key: 'purchasedDate', sortable: true },
                     { key: 'actions', label: 'Actions'},
                 ],
                 sortBy: 'code',
@@ -73,7 +75,7 @@
             }
         },
         created() {
-            db.collection("items").onSnapshot((snapshotChange) => {
+            db.collection('SoldItems').onSnapshot((snapshotChange) => {
                 this.items = [];
                 snapshotChange.forEach((doc) => {
                     this.items.push({
@@ -83,8 +85,9 @@
                         quantity: doc.data().quantity,
                         unit: doc.data().unit,
                         unitAmount: doc.data().unitAmount,
+                        discount: doc.data().discount,
                         totalAmount: doc.data().totalAmount,
-                        supplier: doc.data().supplier,
+                        customerName: doc.data().customerName,
                         purchasedDate: doc.data().purchasedDate
 
                     })
@@ -95,7 +98,7 @@
         methods: {
             deleteItem(id){
                 if (window.confirm("Do you really want to delete?")) {
-                    db.collection("items").doc(id).delete().then(() => {
+                    db.collection("SoldItems").doc(id).delete().then(() => {
                         console.log("Document deleted!");
                     })
                         .catch((error) => {
@@ -104,7 +107,7 @@
                 }
             },
             editItem(id){
-                this.$router.push(`/item/edit/${id}`);
+                this.$router.push(`/bill/edit/${id}`);
             }
         },
         computed: {

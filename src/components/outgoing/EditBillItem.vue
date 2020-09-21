@@ -5,13 +5,13 @@
                 <h3>Billing System</h3>
             </div>
             <div class="card-body">
-                <ValidationObserver ref="adForm">
-                    <form v-on:submit.prevent="addNewBillItem">
+                <ValidationObserver ref="updateBillForm">
+                    <form v-on:submit.prevent="updateNewBillItem">
                         <ValidationProvider name="code" rules="required">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Item Number:</label>
-                                    <b-form-select v-model="newBillingItem.code" :options="codeOptions" @change="getItemDetails(newBillingItem.code)"></b-form-select>
+                                    <b-form-select v-model="newBillingItem.code" :options="codeOptions" @change="getItemDetails(newBillingItem.code)" disabled></b-form-select>
                                     <p>{{ errors[0] }}</p>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
-                        
+
                         <ValidationProvider name="discount" rules="required|min:1|max:6">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
@@ -60,7 +60,7 @@
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
-                        
+
                         <ValidationProvider name="total amount" rules="required|min:1|max:10">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
@@ -69,7 +69,7 @@
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
-                        
+
                         <ValidationProvider name="supplier" rules="">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
@@ -86,7 +86,6 @@
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
-
                         <ValidationProvider name="supplier" rules="">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
@@ -104,7 +103,7 @@
                             </div>
                         </ValidationProvider>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Add Item" :disabled="saving"/>
+                            <input type="submit" class="btn btn-primary" value="Edit Item" :disabled="saving"/>
                         </div>
                     </form>
                 </ValidationObserver>
@@ -122,7 +121,7 @@
 
     export default {
         components: {
-            name: 'addNewBillItem',
+            name: 'editBillItem',
             ValidationProvider,
             ValidationObserver
         },
@@ -130,11 +129,12 @@
             return {
                 oldData: {},
                 saving: false,
+                oldQuantityValue: 0,
                 newBillingItem: {
                     code: null,
                     name: '',
                     unit: '',
-                    quantity:0,
+                    quantity:'0',
                     unitAmount: 0,
                     totalAmount: 0,
                     discount: 0,
@@ -165,38 +165,45 @@
                 ]
             }
         },
+        
 
-
-        mounted() {
-            this.newBillingItem.purchasedDate = new Date().toISOString().slice(0,10);
+       async mounted() {
+            await this.setBillForm();
+            // await this.retractBillQuantityValue();
         },
         methods: {
+            
+            async setBillForm() {
+                let dbRef = await db.collection('SoldItems').doc(this.$route.params.id);
+                dbRef.get().then( (doc) => {
+                    this.newBillingItem = doc.data();
+                    this.oldQuantityValue = doc.data().quantity;
+                }).catch((error) => {
+                    console.log(error)
+                })
+            },
 
             async getItemDetails() {
                 let self = this;
-                  db.collection("items").where("code", "==", `${this.newBillingItem.code}`).get()
+                db.collection("items").where("code", "==", `${self.newBillingItem.code}`).get()
                     .then(function(querySnapshot) {
-                        if (querySnapshot.empty == false) {
-                            querySnapshot.forEach(function(doc) {
-                                self.newBillingItem.name = doc.data().name;
-                                self.newBillingItem.unitAmount = doc.data().unitAmount;
-                                self.newBillingItem.unit = doc.data().unit;
-                                self.oldData = doc.data();
-                            });
-                        } else {
-                            alert('Item number not available yet for billing!')
-                            self.$router.push('/bill/list');
-                            self.resetForm();
-                        }
-
+                        console.log('Here')
+                        console.log('querySnapshot', querySnapshot);
+                        querySnapshot.forEach(function(doc) {
+                            console.log('Here')
+                            self.newBillingItem.name = doc.data().name;
+                            self.newBillingItem.unitAmount = doc.data().unitAmount;
+                            self.newBillingItem.unit = doc.data().unit;
+                            self.oldData = doc.data();
+                        });
                     })
                     .catch(function(error) {
                         console.log("Error getting documents: ", error);
                     });
 
             },
-            async addNewBillItem() {
-                const isValid = await this.$refs.adForm.validate();
+            async updateNewBillItem() {
+                const isValid = await this.$refs.updateBillForm.validate();
                 if (isValid) {
                     let self = this;
                     self.saving = true;
@@ -204,28 +211,25 @@
                     await db.collection("items").where("code", "==", `${self.newBillingItem.code}`).limit(1).get().then(async (query) => {
                         const thing = query.docs[0];
                         let currVal = thing.data().quantity;
-                        const newQuantityValue = parseInt(currVal) - parseInt(self.newBillingItem.quantity)
+
+                        const newQuantityValue = parseInt(currVal)+ parseInt(self.oldQuantityValue )- parseInt(self.newBillingItem.quantity);
 
                         if (newQuantityValue >= 0){
                             await thing.ref.update({
                                 quantity: newQuantityValue
-                            });
-                            await db.collection('SoldItems').add(self.newBillingItem).then(() => {
-                                alert("New Billing successfully created!");
-                                this.resetForm();
+                            })
+                           await db.collection('SoldItems').doc(this.$route.params.id)
+                                .update(self.newBillingItem).then(() => {
+                                this.$router.push('/bill/list')
                             }).catch((error) => {
                                 console.log(error);
                             });
-                            await this.$router.push('/bill/list')
+                            self.saving = false;
                         } else {
+                            self.saving = false;
                             alert('Stock ran out of order for desired quantity')
                         }
-                        self.saving = false;
-                    }).catch((e) => {
-                        self.saving = false;
-                        console.log('error', e)
-                    });
-
+                    }).catch((e) => console.log('error', e));
                 } else {
                     alert("Item failed to be added!");
                 }

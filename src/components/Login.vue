@@ -72,7 +72,7 @@ export default {
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then((data) => {
           console.log('data', data);
-          this.$router.replace({ name: "Dashboard" });
+          this.$router.replace({ name: "Home" });
         })
         .catch(err => {
           this.error = err.message;

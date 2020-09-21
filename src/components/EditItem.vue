@@ -13,7 +13,7 @@
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Item Number:</label>
-                                    <b-form-select v-model="newItem.code" :options="codeOptions"></b-form-select>
+                                    <b-form-select v-model="newItem.code" :options="codeOptions" disabled></b-form-select>
                                     <p>{{ errors[0] }}</p>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                         <ValidationProvider name="unit amount" rules="required|min:1|max:6">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
-                                    <label>Unit Amount:</label>
+                                    <label>Rate:</label>
                                     <input type="number" v-model="newItem.unitAmount" class="form-control" @change="calculateTotalAmount"/>
                                     <p>{{ errors[0] }}</p></div>
                             </div>
@@ -72,13 +72,21 @@
                         <ValidationProvider name="purchased date" rules="required">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
-                                    <label>Supplied Date:</label>
+                                    <label>Purchased Date:</label>
                                     <b-form-datepicker v-model="newItem.purchasedDate" locale="en"></b-form-datepicker>
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
+                        <ValidationProvider name="expiry date" rules="required">
+                            <div slot-scope="{ errors }">
+                                <div class="form-group">
+                                    <label>Expiry Date:</label>
+                                    <b-form-datepicker v-model="newItem.expiryDate" locale="en"></b-form-datepicker>
+                                    <p>{{ errors[0] }}</p></div>
+                            </div>
+                        </ValidationProvider>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Add Item"/>
+                            <input type="submit" class="btn btn-primary" value="Edit Item" :disabled="saving"/>
                         </div>
                     </form>
                 </ValidationObserver>
@@ -100,6 +108,7 @@
         },
         data () {
             return {
+                saving:false,
                 newItem: {
                     code: null,
                     name: '',
@@ -109,6 +118,7 @@
                     totalAmount: 0,
                     supplier: '',
                     purchasedDate: '',
+                    expiryDate: '',
                 },
                 options: [
                     { value: null, text: 'Please select an option' },
@@ -120,12 +130,20 @@
                     { value: null, text: 'Please select an option' },
                     { value: '1', text: '1' },
                     { value: '2', text: '2' },
-                    { value: '3', text: '3' }
+                    { value: '3', text: '3' },
+                    { value: '4', text: '4' },
+                    { value: '5', text: '5' },
+                    { value: '6', text: '6' },
+                    { value: '7', text: '7' },
+                    { value: '8', text: '8' },
+                    { value: '9', text: '9' },
+                    { value: '10', text: '10' },
+                    { value: '11', text: '11' },
                 ]
             }
         },
         created() {
-            let dbRef = db.collection('items').doc(this.$route.params.id);
+            let dbRef = db.collection("items").doc(this.$route.params.id);
             dbRef.get().then((doc) => {
                 this.newItem = doc.data();
             }).catch((error) => {
@@ -137,23 +155,21 @@
                 event.preventDefault()
                 const isValid = await this.$refs.adForm.validate();
                 if(isValid) {
-                    db.collection('items').doc(this.$route.params.id)
+                    this.saving = true;
+                    db.collection("items").doc(this.$route.params.id)
                         .update(this.newItem).then(() => {
-                        console.log("Item successfully updated!");
-                        this.$router.push('/index')
+                        this.$router.push('/item/list')
+                        this.saving = false;
                     }).catch((error) => {
                         console.log(error);
                     });
                 } else {
                     alert("Item failed to be added!");
                 }
-                console.log(isValid);
+
 
             },
             calculateTotalAmount() {
-
-                console.log(this.newItem.unitAmount);
-                console.log(this.newItem.quantity);
                 if (this.newItem.unitAmount !== '' && this.newItem.quantity.length !== '') {
                     this.newItem.totalAmount = this.newItem.unitAmount * this.newItem.quantity;
                 }
@@ -167,6 +183,7 @@
                 this.newItem.totalAmount = 0;
                 this.newItem.supplier = '';
                 this.newItem.purchasedDate = '';
+                this.newItem.expiryDate = '';
             }
         }
     }

@@ -29,7 +29,7 @@
                         <div slot-scope="{ errors }">
                         <div class="form-group">
                             <label>Quantity:</label>
-                            <input type="number" v-model="newItem.quantity" class="form-control" @change="calculateTotalAmount"/>
+                            <input type="number" v-model="newItem.quantity" class="form-control" @click="calculateTotalAmount"/>
                                 <p>{{ errors[0] }}</p></div>
                         </div>
                     </ValidationProvider>
@@ -46,8 +46,8 @@
                     <ValidationProvider name="unit amount" rules="required|min:1|max:6">
                         <div slot-scope="{ errors }">
                     <div class="form-group">
-                        <label>Unit Amount:</label>
-                        <input type="number" v-model="newItem.unitAmount" class="form-control" @change="calculateTotalAmount"/>
+                        <label>Rate:</label>
+                        <input type="number" v-model="newItem.unitAmount" class="form-control" @click="calculateTotalAmount"/>
                             <p>{{ errors[0] }}</p></div>
                     </div>
                     </ValidationProvider>
@@ -70,13 +70,26 @@
                     <ValidationProvider name="purchased date" rules="required">
                         <div slot-scope="{ errors }">
                     <div class="form-group">
-                        <label>Supplied Date:</label>
+                        <label>Purchased Date:</label>
                         <b-form-datepicker v-model="newItem.purchasedDate" locale="en"></b-form-datepicker>
                         <p>{{ errors[0] }}</p></div>
                     </div>
                     </ValidationProvider>
+                    <ValidationProvider name="expiry date" rules="">
+                        <div slot-scope="{ errors }">
+                            <div class="form-group">
+                                <label>Expiry Date:</label>
+                                <b-form-datepicker v-model="newItem.expiryDate" locale="en"></b-form-datepicker>
+                                <p>{{ errors[0] }}</p></div>
+                        </div>
+                    </ValidationProvider>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Add Item"/>
+                        <input
+                                :disabled="saving"
+                                type="submit"
+                                class="btn btn-primary"
+                                value="Add Item"
+                        />
                     </div>
                 </form>
                 </ValidationObserver>
@@ -100,6 +113,7 @@
         },
         data () {
             return {
+                saving: false,
                 newItem: {
                     code: null,
                     name: '',
@@ -109,6 +123,7 @@
                     totalAmount: 0,
                     supplier: '',
                     purchasedDate: '',
+                    expiryDate: ''
                 },
                 options: [
                     { value: null, text: 'Please select an option' },
@@ -120,7 +135,15 @@
                     { value: null, text: 'Please select an option' },
                     { value: '1', text: '1' },
                     { value: '2', text: '2' },
-                    { value: '3', text: '3' }
+                    { value: '3', text: '3' },
+                    { value: '4', text: '4' },
+                    { value: '5', text: '5' },
+                    { value: '6', text: '6' },
+                    { value: '7', text: '7' },
+                    { value: '8', text: '8' },
+                    { value: '9', text: '9' },
+                    { value: '10', text: '10' },
+                    { value: '11', text: '11' },
                 ]
             }
         },
@@ -132,23 +155,38 @@
             async addItem() {
                 const isValid = await this.$refs.adForm.validate();
                 if (isValid) {
-                    db.collection('items').add(this.newItem).then(() => {
-                        alert("Item successfully created!");
-                        this.resetForm();
-                    }).catch((error) => {
-                        console.log(error);
-                    });
-                    await this.$router.push('/index')
+                    this.saving = true;
+
+                    const itemAlreadyExists =  await db.collection("items").where("code", "==", `${this.newItem.code}`).limit(1).get().then((query) => {
+                        const thing = query.docs[0];
+                        if (thing.exists === true) {
+                            return true;
+                        }else {
+                            return false;
+                        }
+                    }).catch((e) => console.log('error', e));
+
+
+                    if (itemAlreadyExists !== true) {
+                        db.collection("items").add(this.newItem).then(() => {
+                            alert("Item successfully created!");
+                            this.resetForm();
+                            this.saving = false;
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+
+                    } else if (itemAlreadyExists !==false){
+                        alert('Item number already exists')
+                        this.saving = false;
+                    }
+                    await this.$router.push('/item/list')
                 } else {
                     alert("Item failed to be added!");
                 }
-                console.log(isValid);
 
             },
             calculateTotalAmount() {
-
-                console.log(this.newItem.unitAmount);
-                console.log(this.newItem.quantity);
                 if (this.newItem.unitAmount !== '' && this.newItem.quantity.length !== '') {
                     this.newItem.totalAmount = this.newItem.unitAmount * this.newItem.quantity;
                 }
@@ -162,6 +200,7 @@
                 this.newItem.totalAmount = 0;
                 this.newItem.supplier = '';
                 this.newItem.purchasedDate = '';
+                this.newItem.expiryDate = '';
             }
         }
     }

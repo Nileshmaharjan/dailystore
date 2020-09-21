@@ -14,9 +14,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav"></ul>
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
 
           <template v-if="user.loggedIn">
             <li class="nav-item">
@@ -31,6 +31,9 @@
             <li class="nav-item">
               <router-link :to="{ name: 'Billing' }" class="nav-link">Billing</router-link>
             </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'BillingList' }" class="nav-link">Billing List</router-link>
+            </li>
 <!--            <div class="nav-item">{{user.data.displayName}}</div>-->
             <li class="nav-item">
               <a class="nav-link" @click.prevent="signOut">Sign out</a>
@@ -40,9 +43,9 @@
             <li class="nav-item">
               <router-link to="login" class="nav-link">Login</router-link>
             </li>
-            <li class="nav-item">
-              <router-link to="register" class="nav-link">Register</router-link>
-            </li>
+<!--            <li class="nav-item">-->
+<!--              <router-link to="register" class="nav-link">Register</router-link>-->
+<!--            </li>-->
           </template>
         </ul>
       </div>

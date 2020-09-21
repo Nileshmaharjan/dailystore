@@ -7,6 +7,8 @@ import AddItem from '../components/AddItem'
 import EditItem from '../components/EditItem'
 import ListItem from '../components/ListItem'
 import BillingItem from '../components/outgoing/Billing';
+import BillingListItem from '../components/outgoing/SoldItemList';
+import EditBillItem from "../components/outgoing/EditBillItem";
 
 Vue.use(Router)
 
@@ -19,11 +21,11 @@ const router = new Router({
         name: 'login',
         component: Login
     },
-    {
-        path: '/register',
-        name: 'Register',
-        component: Register
-    },
+    // {
+    //     path: '/register',
+    //     name: 'Register',
+    //     component: Register
+    // },
     {
         path: '/dashboard',
         name: 'Home',
@@ -31,7 +33,7 @@ const router = new Router({
     },
         {
             name: 'Add',
-            path: '/add',
+            path: '/item/add',
             component: AddItem
         },
         {
@@ -40,13 +42,23 @@ const router = new Router({
             component: BillingItem
         },
         {
+            name: 'BillingList',
+            path: '/bill/list',
+            component: BillingListItem
+        },
+        {
+            name: 'EditBilling',
+            path: '/bill/edit/:id',
+            component: EditBillItem
+        },
+        {
             name: 'Edit',
-            path: '/edit/:id',
+            path: '/item/edit/:id',
             component: EditItem
         },
         {
             name: 'List',
-            path: '/index',
+            path: '/item/list',
             component: ListItem
         },
 ]
