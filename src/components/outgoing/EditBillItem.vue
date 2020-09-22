@@ -179,7 +179,7 @@
         
 
        async mounted() {
-           this.setUnitOptions();
+            this.setUnitOptions();
             await this.setBillForm();
             // await this.retractBillQuantityValue();
         },

@@ -9,6 +9,7 @@ import ListItem from '../components/incoming/ListItem'
 import BillingItem from '../components/outgoing/Billing';
 import BillingListItem from '../components/outgoing/SoldItemList';
 import EditBillItem from "../components/outgoing/EditBillItem";
+import AddNewBill from "../components/outgoing/AddNewBill";
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ const router = new Router({
             name: 'Billing',
             path: '/bill',
             component: BillingItem
+        },
+        {
+            name: 'Billing',
+            path: '/bill/add',
+            component: AddNewBill
         },
         {
             name: 'BillingList',
