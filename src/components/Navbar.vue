@@ -20,23 +20,23 @@
 
           <template v-if="user.loggedIn">
             <li class="nav-item">
-              <router-link :to="{ name: 'Home' }" class="nav-link">Home</router-link>
+              <b-button variant="outline-primary"  class="m-2" @click.prevent="dashboard">Home</b-button>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'Add' }" class="nav-link">Add Item</router-link>
+              <b-dropdown id="dropdown-left" text="Purchased" variant="primary" class="m-2">
+                <b-dropdown-item @click="addItem">Add Item</b-dropdown-item>
+                <b-dropdown-item @click="listItem">List Item</b-dropdown-item>
+              </b-dropdown>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'List' }" class="nav-link">List Item</router-link>
+              <b-dropdown id="dropdown-left" text="Billing" variant="primary" class="m-2">
+                <b-dropdown-item @click="addNewBillItem">Add New Bill</b-dropdown-item>
+                <b-dropdown-item @click="soldItemList">Sold Item List</b-dropdown-item>
+<!--                <b-dropdown-item @click="transactionList">Transaction List</b-dropdown-item>-->
+              </b-dropdown>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'Billing' }" class="nav-link">Billing</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{ name: 'BillingList' }" class="nav-link">Billing List</router-link>
-            </li>
-<!--            <div class="nav-item">{{user.data.displayName}}</div>-->
-            <li class="nav-item">
-              <a class="nav-link" @click.prevent="signOut">Sign out</a>
+              <b-button variant="outline-primary"  class="m-2" @click.prevent="signOut">Logout</b-button>
             </li>
           </template>
           <template v-else>
@@ -73,6 +73,26 @@ export default {
             name: "home"
           });
         });
+    },
+
+    addItem() {
+      this.$router.push('/item/add');
+    },
+
+    addNewBillItem() {
+      this.$router.push('/bill');
+    },
+
+    listItem() {
+      this.$router.push('/item/list');
+    },
+
+    soldItemList() {
+      this.$router.push('/bill/list');
+    },
+
+    dashboard() {
+      this.$router.push('/dashboard');
     }
   }
 };

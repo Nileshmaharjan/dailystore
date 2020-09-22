@@ -3,9 +3,9 @@ import Router from 'vue-router';
 import Login from '../components/Login'
 import Register from '../components/Register'
 import Home from '../components/Home'
-import AddItem from '../components/AddItem'
-import EditItem from '../components/EditItem'
-import ListItem from '../components/ListItem'
+import AddItem from '../components/incoming/AddItem'
+import EditItem from '../components/incoming/EditItem'
+import ListItem from '../components/incoming/ListItem'
 import BillingItem from '../components/outgoing/Billing';
 import BillingListItem from '../components/outgoing/SoldItemList';
 import EditBillItem from "../components/outgoing/EditBillItem";

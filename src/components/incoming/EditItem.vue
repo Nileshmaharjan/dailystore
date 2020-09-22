@@ -97,7 +97,7 @@
 
 <script>
 
-    import { db } from '../config/db';
+    import { db } from '../../config/db';
     import { ValidationProvider,ValidationObserver } from 'vee-validate';
 
     export default {
