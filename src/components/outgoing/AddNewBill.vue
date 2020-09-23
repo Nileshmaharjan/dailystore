@@ -41,11 +41,11 @@
                                 <p>{{ errors[0] }}</p>
                             </div>
                         </ValidationProvider>
-                        <ValidationProvider name="quantity" rules="required|min:1|max:6">
+                        <ValidationProvider name="quantity" :rules="`required|min:1|max:6|greaterThanZero:${newBillingItem.quantity}`">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Quantity:</label>
-                                    <input type="number" v-model="newBillingItem.quantity" class="form-control" @change="calculateTotalAmount"/>
+                                    <input type="number" min="0" v-model="newBillingItem.quantity" class="form-control" @change="calculateTotalAmount"/>
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
@@ -61,7 +61,7 @@
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Rate:</label>
-                                    <input type="number" v-model="newBillingItem.unitAmount" class="form-control" @change="calculateTotalAmount" disabled/>
+                                    <input type="number" min="0" v-model="newBillingItem.unitAmount" class="form-control" @change="calculateTotalAmount" disabled/>
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
@@ -69,7 +69,7 @@
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Total Amount:</label>
-                                    <input type="number" v-model="newBillingItem.totalAmount" class="form-control" disabled/>
+                                    <input type="number" min="0" v-model="newBillingItem.totalAmount" class="form-control" disabled/>
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
@@ -101,27 +101,46 @@
 
 
                         <template v-slot:cell(actions)="data">
-                            <button>
-                                <b-icon @click="editItem(data.index)" icon="pencil"></b-icon>
+                            <button @click="editItem(data.index)">
+                                <b-icon icon="pencil"></b-icon>
                             </button>
-                            <button>
-                                <b-icon @click.prevent="deleteItem(data.index)" icon="trash"></b-icon>
+                            <button @click.prevent="deleteItem(data.index)">
+                                <b-icon icon="trash"></b-icon>
                             </button>
                         </template>
                         <template slot="bottom-row" slot-scope="data">
-                            <tr>
-                                <td>Discount</td>
-                                <td>
-                                    <input type="number" v-model="discount" class="form-control"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Total: {{total}}
-                                </td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td/>-->
+<!--                                <td>Discount</td>-->
+<!--                                <td>-->
+<!--                                    <input type="number" v-model="discount" class="form-control"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Total: {{total}}-->
+<!--                                </td>-->
+<!--                            </tr>-->
                         </template>
                     </b-table>
+                    <b-form inline>
+                        <label>Discount</label>
+                        <b-input type="number" min="0" v-model="discount" class="form-control ml-2"/>
+                    </b-form>
+                    <b-form inline class="mt-4">
+                        <label>Total Amount</label>
+                        <b-input type="number" v-model="total" class="form-control ml-2" disabled/>
+                    </b-form>
+
                 </div>
+
+                <b-row align-h="end">
+                    <b-col cols="7"></b-col>
+                    <b-col cols="1">
+                        <button @click.prevent="saveItemCollection">
+                           Save
+                        </button>
+                    </b-col>
+                </b-row>
             </div>
         </div>
     </div>
@@ -326,6 +345,23 @@
                 });
 
             },
+            saveItemCollection() {
+                if (this.items && this.items.length > 0) {
+                    this.items.forEach(function (value, i) {
+                        let batch = db.batch();
+                        let newItem = db.collection("SoldItems").doc(new Date().toISOString() + `${i}`);
+                        batch.set(newItem, value);
+
+                        batch.commit().then(function () {
+                            console.log('Commited!!!')
+                        }).catch((e)=> console.log('error',e));
+                    })
+                    this.$router.push('/bill/list')
+                } else {
+                    alert('Add bill item first')
+                }
+
+            }
         },
         computed: {
             rows() {

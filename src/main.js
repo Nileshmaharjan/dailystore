@@ -11,6 +11,7 @@ import { ValidationProvider } from 'vee-validate';
 import { extend } from 'vee-validate';
 import {required, email, min, max} from 'vee-validate/dist/rules';
 
+
 // Add the required rule
 extend('required', {
   ...required,
@@ -32,6 +33,18 @@ extend("max", {
   ...max,
   message: (field, params, data) => `The ${field} should be ${params.length} character at max.`
 });
+
+extend("greaterThanZero", {
+  message: (field, params, data)   =>`The ${field} should contain values greater than 0.`,
+  validate: (value) => {
+    if (value > 0) {
+      return true
+    } else {
+      return  false;
+    }
+
+  }
+})
 
 // Register it globally
 // main.js or any entry file.

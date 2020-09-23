@@ -27,16 +27,6 @@
                         <template v-slot:cell(sn)="data">
                             {{data.index + 1}}
                         </template>
-
-                        <template v-slot:cell(actions)="data">
-                            <button>
-                                <b-icon @click="editItem(data.item.key)" icon="pencil"></b-icon>
-                            </button>
-                            <button>
-                                <b-icon @click.prevent="deleteItem(data.item.key)" icon="trash"></b-icon>
-                            </button>
-                        </template>
-
                     </b-table>
                 </div>
             </div>
@@ -54,7 +44,7 @@
         },
         data() {
             return {
-                perPage: 5,
+                perPage: 20,
                 currentPage: 1,
                 items: [],
                 fields: [
@@ -66,9 +56,8 @@
                     { key: 'unitAmount', label: 'Rate', sortable: false },
                     { key: 'discount', sortable: false },
                     { key: 'totalAmount', sortable: true },
-                    { key: 'customerName', sortable: true },
+                    { key: 'customerId', sortable: true },
                     { key: 'purchasedDate', sortable: true },
-                    { key: 'actions', label: 'Actions'},
                 ],
                 sortBy: 'code',
                 sortDesc: false,
@@ -96,19 +85,6 @@
         },
 
         methods: {
-            deleteItem(id){
-                if (window.confirm("Do you really want to delete?")) {
-                    db.collection("SoldItems").doc(id).delete().then(() => {
-                        console.log("Document deleted!");
-                    })
-                        .catch((error) => {
-                            console.error(error);
-                        })
-                }
-            },
-            editItem(id){
-                this.$router.push(`/bill/edit/${id}`);
-            }
         },
         computed: {
             rows() {

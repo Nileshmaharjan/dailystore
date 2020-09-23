@@ -53,7 +53,7 @@
         },
         data() {
             return {
-                perPage: 5,
+                perPage: 20,
                 currentPage: 1,
                 items: [],
                 fields: [
