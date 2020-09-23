@@ -6,7 +6,8 @@ import Home from '../components/Home'
 import AddItem from '../components/incoming/AddItem'
 import EditItem from '../components/incoming/EditItem'
 import ListItem from '../components/incoming/ListItem'
-import BillingListItem from '../components/outgoing/SoldItemList';
+import SoldListItem from '../components/outgoing/SoldItemList';
+import BillList from "../components/outgoing/BillList";
 import AddNewBill from "../components/outgoing/AddNewBill";
 
 Vue.use(Router)
@@ -41,9 +42,14 @@ const router = new Router({
             component: AddNewBill
         },
         {
-            name: 'BillingList',
+            name: 'SoldList',
+            path: '/sold/list',
+            component: SoldListItem
+        },
+        {
+            name: 'BillList',
             path: '/bill/list',
-            component: BillingListItem
+            component: BillList
         },
 
         {

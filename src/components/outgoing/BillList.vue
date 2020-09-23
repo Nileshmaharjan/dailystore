@@ -1,5 +1,3 @@
-// ListItem.vue
-
 <template>
     <div class="container">
         <div class="card">
@@ -37,7 +35,7 @@
 
     export default {
         components: {
-            name: 'ListItem'
+            name: 'BillListItem'
         },
         data() {
             return {
@@ -46,34 +44,25 @@
                 items: [],
                 fields: [
                     { key: 'sn', label: 'SN' },
-                    { key: 'code' },
-                    { key: 'name' },
-                    { key: 'quantity' },
-                    { key: 'unit'},
-                    { key: 'rate', label: 'Rate' },
                     { key: 'discount' },
                     { key: 'totalAmount' },
                     { key: 'customerId' },
                     { key: 'purchasedDate' },
                 ],
-                sortBy: 'code',
+                sortBy: '',
                 sortDesc: false,
             }
         },
         created() {
-            db.collection('SoldItems').onSnapshot((snapshotChange) => {
+            db.collection('Bill').onSnapshot((snapshotChange) => {
                 this.items = [];
                 snapshotChange.forEach((doc) => {
+                    console.log('data', doc.data());
                     this.items.push({
                         key: doc.id,
-                        code: doc.data().code,
-                        name: doc.data().name,
-                        quantity: doc.data().quantity,
-                        unit: doc.data().unit,
-                        rate: doc.data().rate,
                         discount: doc.data().discount,
                         totalAmount: doc.data().totalAmount,
-                        customerName: doc.data().customerName,
+                        customerId: doc.data().customerId,
                         purchasedDate: doc.data().purchasedDate
 
                     })

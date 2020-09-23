@@ -27,7 +27,7 @@
                                 <p>{{ errors[0] }}</p>
                             </div>
                         </ValidationProvider>
-                        <ValidationProvider name="quantity" rules="required|min:1|max:6">
+                        <ValidationProvider name="quantity" :rules="`required|min:1|max:10|greaterThanZero:${newItem.quantity}`">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Quantity:</label>
@@ -45,11 +45,11 @@
                             </div>
                         </ValidationProvider>
 
-                        <ValidationProvider name="unit amount" rules="required|min:1|max:6">
+                        <ValidationProvider name="unit amount" :rules="`required|min:1|max:10|greaterThanZero:${newItem.rate}`">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Rate:</label>
-                                    <input type="number" v-model="newItem.unitAmount" class="form-control" @change="calculateTotalAmount"/>
+                                    <input type="number" v-model="newItem.rate" class="form-control" @change="calculateTotalAmount"/>
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
@@ -114,7 +114,8 @@
                     name: '',
                     unit: '',
                     quantity:0,
-                    unitAmount: 0,
+                    remainingQuantity: 0,
+                    rate: 0,
                     totalAmount: 0,
                     supplier: '',
                     purchasedDate: '',
@@ -125,40 +126,40 @@
 
                 codeOptions: [
                     { value: null, text: 'Please select an option' },
-                    { value: '1', text: '1' },
-                    { value: '2', text: '2' },
-                    { value: '3', text: '3' },
-                    { value: '4', text: '4' },
-                    { value: '5', text: '5' },
-                    { value: '6', text: '6' },
-                    { value: '7', text: '7' },
-                    { value: '8', text: '8' },
-                    { value: '9', text: '9' },
-                    { value: '10', text: '10' },
-                    { value: '11', text: '11' },
-                    { value: '12', text: '12' },
-                    { value: '13', text: '13' },
-                    { value: '14', text: '14' },
-                    { value: '15', text: '15' },
-                    { value: '16', text: '16' },
-                    { value: '17', text: '17' },
-                    { value: '18', text: '18' },
-                    { value: '19', text: '19' },
-                    { value: '20', text: '20' },
-                    { value: '21', text: '21' },
-                    { value: '22', text: '22' },
-                    { value: '23', text: '23' },
-                    { value: '24', text: '24' },
-                    { value: '25', text: '25' },
-                    { value: '26', text: '26' },
-                ]
+                    { value: 'A001', text: 'A001' },
+                    { value: 'A002', text: 'A002' },
+                    { value: 'A003', text: 'A003' },
+                    { value: 'A004', text: 'A004' },
+                    { value: 'A005', text: 'A005' },
+                    { value: 'A006', text: 'A006' },
+                    { value: 'A007', text: 'A007' },
+                    { value: 'A008', text: 'A008' },
+                    { value: 'A009', text: 'A009' },
+                    { value: 'A0010', text: 'A0010' },
+                    { value: 'A0011', text: 'A0011' },
+                    { value: 'A0012', text: 'A0012' },
+                    { value: 'A0013', text: 'A0013' },
+                    { value: 'A0014', text: 'A0014' },
+                    { value: 'A0015', text: 'A0015' },
+                    { value: 'A0016', text: 'A0016' },
+                    { value: 'A0017', text: 'A0017' },
+                    { value: 'A0018', text: 'A0018' },
+                    { value: 'A0019', text: 'A0019' },
+                    { value: 'A0020', text: 'A0020' },
+                    { value: 'A0021', text: 'A0021' },
+                    { value: 'A0022', text: 'A0022' },
+                    { value: 'A0023', text: 'A0023' },
+                    { value: 'A0024', text: 'A0024' },
+                    { value: 'A0025', text: 'A0025' },
+                    { value: 'A0026', text: 'A0026' },
+                ],
             }
         },
         created() {
             let dbRef = db.collection("items").doc(this.$route.params.id);
             dbRef.get().then((doc) => {
                 this.newItem = doc.data();
-                this.newItem.totalAmount = this.newItem.unitAmount * this.newItem.quantity
+                this.newItem.totalAmount = this.newItem.rate * this.newItem.quantity
             }).catch((error) => {
                 console.log(error)
             })
@@ -187,6 +188,8 @@
                 const isValid = await this.$refs.adForm.validate();
                 if(isValid) {
                     this.saving = true;
+                    this.newItem.remainingQuantity = this.newItem.quantity;
+
                     db.collection("items").doc(this.$route.params.id)
                         .update(this.newItem).then(() => {
                         this.$router.push('/item/list')
@@ -202,16 +205,17 @@
             },
             calculateTotalAmount() {
                 console.log('Here');
-                if (this.newItem.unitAmount !== '' && this.newItem.quantity.length !== '') {
-                    this.newItem.totalAmount = this.newItem.unitAmount * this.newItem.quantity;
+                if (this.newItem.rate !== '' && this.newItem.quantity.length !== '') {
+                    this.newItem.totalAmount = this.newItem.rate * this.newItem.quantity;
                 }
             },
             resetForm(){
                 this.newItem.code = null;
                 this.newItem.name = null;
                 this.newItem.quantity = 0;
+                this.newItem.remainingQuantity = 0;
                 this.newItem.unit= '';
-                this.newItem.unitAmount = 0;
+                this.newItem.rate = 0;
                 this.newItem.totalAmount = 0;
                 this.newItem.supplier = '';
                 this.newItem.purchasedDate = '';

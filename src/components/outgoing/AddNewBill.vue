@@ -20,7 +20,7 @@
                     <b-button v-b-modal="'my-modal'" class="ml-2" @click="toggleModal" ref="btnToggle">Add Item</b-button>
                 </b-form>
 
-                <b-modal id="my-modal" hide-footer no-close-on-backdrop>
+                <b-modal id="my-modal"hide-footer no-close-on-backdrop hide-header-close>
                     <ValidationObserver ref="adForm">
                     <form v-on:submit.prevent="addNewBillItem">
                         <ValidationProvider name="code" rules="required">
@@ -41,7 +41,7 @@
                                 <p>{{ errors[0] }}</p>
                             </div>
                         </ValidationProvider>
-                        <ValidationProvider name="quantity" :rules="`required|min:1|max:6|greaterThanZero:${newBillingItem.quantity}`">
+                        <ValidationProvider name="quantity" :rules="`required|min:1|max:10|greaterThanZero:${newBillingItem.quantity}`">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Quantity:</label>
@@ -57,11 +57,11 @@
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
-                        <ValidationProvider name="unit amount" rules="required|min:1|max:10">
+                        <ValidationProvider name="unit amount" :rules="`required|min:1|max:10|greaterThanZero:${newBillingItem.rate}`">
                             <div slot-scope="{ errors }">
                                 <div class="form-group">
                                     <label>Rate:</label>
-                                    <input type="number" min="0" v-model="newBillingItem.unitAmount" class="form-control" @change="calculateTotalAmount" disabled/>
+                                    <input type="number" min="0" v-model="newBillingItem.rate" class="form-control" @change="calculateTotalAmount" disabled/>
                                     <p>{{ errors[0] }}</p></div>
                             </div>
                         </ValidationProvider>
@@ -165,7 +165,7 @@
                     name: '',
                     unit: '',
                     quantity:0,
-                    unitAmount: 0,
+                    rate: 0,
                     totalAmount: 0,
                     customerId: '',
                     purchasedDate: ''
@@ -173,32 +173,32 @@
                 options: [],
                 codeOptions: [
                     { value: null, text: 'Please select an option' },
-                    { value: '1', text: '1' },
-                    { value: '2', text: '2' },
-                    { value: '3', text: '3' },
-                    { value: '4', text: '4' },
-                    { value: '5', text: '5' },
-                    { value: '6', text: '6' },
-                    { value: '7', text: '7' },
-                    { value: '8', text: '8' },
-                    { value: '9', text: '9' },
-                    { value: '10', text: '10' },
-                    { value: '11', text: '11' },
-                    { value: '12', text: '12' },
-                    { value: '13', text: '13' },
-                    { value: '14', text: '14' },
-                    { value: '15', text: '15' },
-                    { value: '16', text: '16' },
-                    { value: '17', text: '17' },
-                    { value: '18', text: '18' },
-                    { value: '19', text: '19' },
-                    { value: '20', text: '20' },
-                    { value: '21', text: '21' },
-                    { value: '22', text: '22' },
-                    { value: '23', text: '23' },
-                    { value: '24', text: '24' },
-                    { value: '25', text: '25' },
-                    { value: '26', text: '26' },
+                    { value: 'A001', text: 'A001' },
+                    { value: 'A002', text: 'A002' },
+                    { value: 'A003', text: 'A003' },
+                    { value: 'A004', text: 'A004' },
+                    { value: 'A005', text: 'A005' },
+                    { value: 'A006', text: 'A006' },
+                    { value: 'A007', text: 'A007' },
+                    { value: 'A008', text: 'A008' },
+                    { value: 'A009', text: 'A009' },
+                    { value: 'A0010', text: 'A0010' },
+                    { value: 'A0011', text: 'A0011' },
+                    { value: 'A0012', text: 'A0012' },
+                    { value: 'A0013', text: 'A0013' },
+                    { value: 'A0014', text: 'A0014' },
+                    { value: 'A0015', text: 'A0015' },
+                    { value: 'A0016', text: 'A0016' },
+                    { value: 'A0017', text: 'A0017' },
+                    { value: 'A0018', text: 'A0018' },
+                    { value: 'A0019', text: 'A0019' },
+                    { value: 'A0020', text: 'A0020' },
+                    { value: 'A0021', text: 'A0021' },
+                    { value: 'A0022', text: 'A0022' },
+                    { value: 'A0023', text: 'A0023' },
+                    { value: 'A0024', text: 'A0024' },
+                    { value: 'A0025', text: 'A0025' },
+                    { value: 'A0026', text: 'A0026' },
                 ],
                 perPage: 10,
                 currentPage: 1,
@@ -208,7 +208,7 @@
                     { key: 'name'},
                     { key: 'quantity' },
                     { key: 'unit' },
-                    { key: 'unitAmount', label: 'Rate' },
+                    { key: 'rate', label: 'Rate' },
                     { key: 'totalAmount', },
                     { key: 'customerId', },
                     { key: 'purchasedDate', },
@@ -232,12 +232,12 @@
             },
             async getItemDetails() {
                 let self = this;
-                db.collection("items").where("code", "==", `${this.newBillingItem.code}`).get()
+                db.collection("items").where("code", "==", `${this.newBillingItem.code}`).orderBy("remainingQuantity").limit(1).get()
                     .then(function(querySnapshot) {
                         if (querySnapshot.empty == false) {
                             querySnapshot.forEach(function(doc) {
                                 self.newBillingItem.name = doc.data().name;
-                                self.newBillingItem.unitAmount = doc.data().unitAmount;
+                                self.newBillingItem.rate = doc.data().rate;
                                 self.newBillingItem.unit = doc.data().unit;
                                 self.oldData = doc.data();
                             });
@@ -257,9 +257,10 @@
                 if (isValid) {
                     this.saving = true;
 
-                    await db.collection("items").where("code", "==", `${this.newBillingItem.code}`).limit(1).get().then(async (query) => {
+                    await db.collection("items").where("code", "==", `${this.newBillingItem.code}`).orderBy("remainingQuantity").limit(1).get().then(async (query) => {
                         const thing = query.docs[0];
-                        let currVal = thing.data().quantity;
+                        let currVal = thing.data().remainingQuantity;
+
                         const newQuantityValue = parseInt(currVal) - parseInt(this.newBillingItem.quantity)
 
                         if (newQuantityValue >= 0){
@@ -269,7 +270,7 @@
                                 name: this.newBillingItem.name,
                                 unit: this.newBillingItem.unit,
                                 quantity: this.newBillingItem.quantity,
-                                unitAmount: this.newBillingItem.unitAmount,
+                                rate: this.newBillingItem.rate,
                                 totalAmount: this.newBillingItem.totalAmount,
                                 customerId: this.newBillingItem.customerId,
                                 purchasedDate: this.newBillingItem.purchasedDate
@@ -299,8 +300,8 @@
 
             },
             calculateTotalAmount() {
-                if (this.newBillingItem.unitAmount !== '' && this.newBillingItem.quantity.length !== '') {
-                    this.newBillingItem.totalAmount =( this.newBillingItem.unitAmount * this.newBillingItem.quantity);
+                if (this.newBillingItem.rate !== '' && this.newBillingItem.quantity.length !== '') {
+                    this.newBillingItem.totalAmount =( this.newBillingItem.rate * this.newBillingItem.quantity);
                 }
             },
             resetForm(){
@@ -308,7 +309,7 @@
                 this.newBillingItem.name = null;
                 this.newBillingItem.quantity = 0;
                 this.newBillingItem.unit= '';
-                this.newBillingItem.unitAmount = 0;
+                this.newBillingItem.rate = 0;
                 this.newBillingItem.totalAmount = 0;
                 this.newBillingItem.customerId = '';
                 this.isEdit = false,
@@ -324,7 +325,7 @@
                 this.newBillingItem.name = this.items[indexValue].name;
                 this.newBillingItem.quantity = this.items[indexValue].quantity;
                 this.newBillingItem.unit= this.items[indexValue].unit;
-                this.newBillingItem.unitAmount = this.items[indexValue].unitAmount;
+                this.newBillingItem.rate = this.items[indexValue].rate;
                 this.newBillingItem.discount = this.items[indexValue].discount;
                 this.newBillingItem.totalAmount = this.items[indexValue].totalAmount;
                 this.newBillingItem.customerId = this.items[indexValue].customerId;
@@ -347,6 +348,20 @@
             },
             saveItemCollection() {
                 if (this.items && this.items.length > 0) {
+                    const obj = {
+                        totalAmount: this.total,
+                        discount: this.discount,
+                        itemList: this.items,
+                        customerId: this.items[0].customerId,
+                        purchasedDate:this.items[0].purchasedDate
+                    }
+
+                    db.collection("Bill").doc(new Date().toISOString()).set(obj).then(() => {
+                        console.log('called')
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+
                     this.items.forEach(async function (value, i) {
                         let batch = db.batch();
                         let newItem = db.collection("SoldItems").doc(new Date().toISOString() + `${i}`);
@@ -355,12 +370,13 @@
 
                         await db.collection("items")
                                             .where("code", "==", `${value.code}`)
+                                            .orderBy("remainingQuantity")
                                             .limit(1).get().then((query)=> {
                                             const thing = query.docs[0];
-                                            let currVal = thing.data().quantity;
+                                            let currVal = thing.data().remainingQuantity;
                                             const newQuantityValue = parseInt(currVal) - parseInt(value.quantity)
                                             thing.ref.update({
-                                                quantity: newQuantityValue
+                                                remainingQuantity: newQuantityValue
                                             });
                                         }).catch((e) => console.log('error',e));
 
@@ -369,6 +385,7 @@
                             console.log('Commited!!!')
                         }).catch((e)=> console.log('error',e));
                     })
+
                     this.$router.push('/bill/list')
                 } else {
                     alert('Add bill item first')
