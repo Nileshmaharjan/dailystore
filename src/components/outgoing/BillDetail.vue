@@ -25,7 +25,7 @@
                         </template>
                     </b-table>
                     <div class="label label-danger">Customer Id: {{ customerId }}</div>
-                    <div class="label label-danger">Total Amount: {{ totalAmount }}</div>
+                    <div class="label label-danger">Total Paid Amount: {{ totalAmount }}</div>
                     <div class="label label-danger">Total Discount: {{ discount }}</div>
                 </div>
             </div>
