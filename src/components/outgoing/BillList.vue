@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3>Billing List</h3>
+                <h3>Bill List</h3>
             </div>
             <div class="card-body">
                 <div>
@@ -21,6 +21,11 @@
                     >
                         <template v-slot:cell(sn)="data">
                             {{data.index + 1}}
+                        </template>
+                        <template v-slot:cell(actions)="data">
+                            <button>
+                                <b-icon @click="billDetail(data.item.key)" icon="eye-fill"></b-icon>
+                            </button>
                         </template>
                     </b-table>
                 </div>
@@ -44,10 +49,11 @@
                 items: [],
                 fields: [
                     { key: 'sn', label: 'SN' },
-                    { key: 'discount' },
-                    { key: 'totalAmount' },
                     { key: 'customerId' },
+                    { key: 'totalAmount' },
+                    { key: 'discount' },
                     { key: 'purchasedDate' },
+                    { key: 'actions', label: 'Actions'},
                 ],
                 sortBy: '',
                 sortDesc: false,
@@ -57,7 +63,6 @@
             db.collection('Bill').onSnapshot((snapshotChange) => {
                 this.items = [];
                 snapshotChange.forEach((doc) => {
-                    console.log('data', doc.data());
                     this.items.push({
                         key: doc.id,
                         discount: doc.data().discount,
@@ -71,6 +76,9 @@
         },
 
         methods: {
+            billDetail(id){
+                this.$router.push(`/bill/detail/${id}`);
+            }
         },
         computed: {
             rows() {

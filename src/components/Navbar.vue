@@ -23,13 +23,13 @@
               <b-button variant="outline-primary"  class="m-2" @click.prevent="dashboard">Home</b-button>
             </li>
             <li class="nav-item">
-              <b-dropdown id="dropdown-left" text="Purchased" variant="primary" class="m-2">
+              <b-dropdown id="dropdown-left" text="Purchased" variant="outline-primary" class="m-2">
                 <b-dropdown-item @click="addItem">Add Item</b-dropdown-item>
                 <b-dropdown-item @click="listItem">List Item</b-dropdown-item>
               </b-dropdown>
             </li>
             <li class="nav-item">
-              <b-dropdown id="dropdown-left" text="Billing" variant="primary" class="m-2">
+              <b-dropdown id="dropdown-left" text="Billing" variant="outline-primary" class="m-2">
                 <b-dropdown-item @click="newBillItem">New Bill</b-dropdown-item>
                 <b-dropdown-item @click="billList">Bill List</b-dropdown-item>
                 <b-dropdown-item @click="soldItemList">Sold Item List</b-dropdown-item>

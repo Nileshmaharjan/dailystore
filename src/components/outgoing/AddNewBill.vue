@@ -5,21 +5,34 @@
                 <h3>Billing System</h3>
             </div>
             <div class="card-body">
-                <b-form inline>
-                    <label>Customer Id/Number</label>
-                    <b-input
-                            v-model="newBillingItem.customerId"
-                            id="inline-form-input-name"
-                            type="number"
-                            class="mb-2 ml-4 mr-sm-2 mb-sm-0"
-                    ></b-input>
+                <div class="col-12">
+                         <span class="col-12">
+                              <label>Supplied Date</label>
+                              <b-form-datepicker style="width: 50%;display: inline-block" v-model="newBillingItem.purchasedDate" locale="en"></b-form-datepicker>
+                         </span>
+                </div>
+                <div class="col-12" style="padding-bottom: 20px">
+                        <span class="form-group col-6">
+                            <label>Customer Id: </label>
+                            <input
+                                    v-model="customerId"
+                                    type="number"
+                                    class="ml-4"
+                            />
+                        </span>
+                        <span class="form-group col-6">
+                            <label>Customer Mobile Number: </label>
+                            <input
+                                    v-model="customerMobileNumber"
+                                    type="number"
+                                    class="ml-4"
+                            />
+                        </span>
 
-                    <label>Supplied Date</label>
-                    <b-form-datepicker v-model="newBillingItem.purchasedDate" locale="en" class="ml-4"></b-form-datepicker>
-
-                    <b-button v-b-modal="'my-modal'" class="ml-2" @click="toggleModal" ref="btnToggle">Add Item</b-button>
-                </b-form>
-
+                        <span class="col-6">
+                             <b-button v-b-modal="'my-modal'" class="ml-2" @click="toggleModal" ref="btnToggle">Add Item</b-button>
+                        </span>
+                    </div>
                 <b-modal id="my-modal"hide-footer no-close-on-backdrop hide-header-close>
                     <ValidationObserver ref="adForm">
                     <form v-on:submit.prevent="addNewBillItem">
@@ -74,14 +87,13 @@
                             </div>
                         </ValidationProvider>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Add Item" :disabled="saving"/>
+                            <input type="submit"  style="margin-right: 20px" class="btn btn-primary" value="Add Item" :disabled="saving"/>
                             <b-button @click="toggleModal" >Cancel</b-button>
                         </div>
                     </form>
                     </ValidationObserver>
                 </b-modal>
-
-                <div>
+                <div class="col-12">
                     <b-pagination
                             v-model="currentPage"
                             :per-page="perPage"
@@ -108,39 +120,29 @@
                                 <b-icon icon="trash"></b-icon>
                             </button>
                         </template>
-                        <template slot="bottom-row" slot-scope="data">
-<!--                            <tr>-->
-<!--                                <td/>-->
-<!--                                <td>Discount</td>-->
-<!--                                <td>-->
-<!--                                    <input type="number" v-model="discount" class="form-control"/>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td>Total: {{total}}-->
-<!--                                </td>-->
-<!--                            </tr>-->
-                        </template>
                     </b-table>
-                    <b-form inline>
+                    <div class="col-4" style="padding-bottom: 20px">
                         <label>Discount</label>
                         <b-input type="number" min="0" v-model="discount" class="form-control ml-2"/>
-                    </b-form>
-                    <b-form inline class="mt-4">
+                    </div>
+                    <div class="col-4">
                         <label>Total Amount</label>
                         <b-input type="number" v-model="total" class="form-control ml-2" disabled/>
-                    </b-form>
+                    </div>
 
                 </div>
 
-                <b-row align-h="end">
-                    <b-col cols="7"></b-col>
-                    <b-col cols="1">
-                        <button @click.prevent="saveItemCollection">
-                           Save
-                        </button>
-                    </b-col>
-                </b-row>
+                <div class="col-12">
+                    <b-row align-h="end">
+                        <b-col cols="7"></b-col>
+                        <b-col cols="1">
+                            <button @click.prevent="saveItemCollection">
+                                Save
+                            </button>
+                        </b-col>
+                    </b-row>
+                </div>
+
             </div>
         </div>
     </div>
@@ -210,7 +212,6 @@
                     { key: 'unit' },
                     { key: 'rate', label: 'Rate' },
                     { key: 'totalAmount', },
-                    { key: 'customerId', },
                     { key: 'purchasedDate', },
                     { key: 'actions', label: 'Actions'},
                 ],
@@ -219,6 +220,8 @@
                 discount: 0,
                 isEdit: false,
                 indexValue: null,
+                customerMobileNumber: '',
+                customerId: '',
             }
         },
         mounted() {

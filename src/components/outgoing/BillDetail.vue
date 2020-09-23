@@ -1,13 +1,12 @@
-// ListItem.vue
-
 <template>
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3>Sold Items List</h3>
+                <h3>Billing Detail</h3>
             </div>
             <div class="card-body">
                 <div>
+
                     <b-pagination
                             v-model="currentPage"
                             :per-page="perPage"
@@ -25,6 +24,9 @@
                             {{data.index + 1}}
                         </template>
                     </b-table>
+                    <div class="label label-danger">Customer Id: {{ customerId }}</div>
+                    <div class="label label-danger">Total Amount: {{ totalAmount }}</div>
+                    <div class="label label-danger">Total Discount: {{ discount }}</div>
                 </div>
             </div>
         </div>
@@ -37,7 +39,7 @@
 
     export default {
         components: {
-            name: 'ListItem'
+            name: 'BillDetail'
         },
         data() {
             return {
@@ -46,36 +48,41 @@
                 items: [],
                 fields: [
                     { key: 'sn', label: 'SN' },
-                    { key: 'code' },
+                    { key: 'code', },
                     { key: 'name' },
                     { key: 'quantity' },
-                    { key: 'unit'},
-                    { key: 'rate', label: 'Rate' },
+                    { key: 'unit' },
+                    { key: 'rate' },
                     { key: 'totalAmount' },
-                    { key: 'purchasedDate' },
                 ],
-                sortBy: 'code',
+                sortBy: '',
                 sortDesc: false,
+                totalAmount: 0,
+                discount: 0,
+                customerId: ''
             }
         },
         created() {
-            db.collection('SoldItems').onSnapshot((snapshotChange) => {
-                this.items = [];
-                snapshotChange.forEach((doc) => {
-                    this.items.push({
-                        key: doc.id,
-                        code: doc.data().code,
-                        name: doc.data().name,
-                        quantity: doc.data().quantity,
-                        unit: doc.data().unit,
-                        rate: doc.data().rate,
-                        discount: doc.data().discount,
-                        totalAmount: doc.data().totalAmount,
-                        customerName: doc.data().customerName,
-                        purchasedDate: doc.data().purchasedDate
+            let dbRef = db.collection("Bill").doc(this.$route.params.id);
+            dbRef.get().then((doc) => {
+               const itemCollection = doc.data();
+               this.totalAmount = doc.data().totalAmount;
+               this.discount = doc.data().discount;
+               this.customerId = doc.data().customerId;
 
-                    })
-                });
+               itemCollection.itemList.forEach((val) => {
+                   this.items.push({
+                       code: val.code,
+                       name: val.name,
+                       purchasedDate: val.purchasedDate,
+                       quantity: val.quantity,
+                       rate: val.rate,
+                       totalAmount: val.totalAmount,
+                       unit: val.unit
+                   })
+               })
+            }).catch((error) => {
+                console.log(error)
             })
         },
 
