@@ -347,10 +347,23 @@
             },
             saveItemCollection() {
                 if (this.items && this.items.length > 0) {
-                    this.items.forEach(function (value, i) {
+                    this.items.forEach(async function (value, i) {
                         let batch = db.batch();
                         let newItem = db.collection("SoldItems").doc(new Date().toISOString() + `${i}`);
                         batch.set(newItem, value);
+
+
+                        await db.collection("items")
+                                            .where("code", "==", `${value.code}`)
+                                            .limit(1).get().then((query)=> {
+                                            const thing = query.docs[0];
+                                            let currVal = thing.data().quantity;
+                                            const newQuantityValue = parseInt(currVal) - parseInt(value.quantity)
+                                            thing.ref.update({
+                                                quantity: newQuantityValue
+                                            });
+                                        }).catch((e) => console.log('error',e));
+
 
                         batch.commit().then(function () {
                             console.log('Commited!!!')
@@ -369,7 +382,6 @@
             },
             total: function() {
                 let discountValue = this.discount;
-                console.log('called', discountValue);
                 const result = this.items.reduce(function(a, c){
                     return a + Number(((c.totalAmount)) || 0)
                 }, 0)

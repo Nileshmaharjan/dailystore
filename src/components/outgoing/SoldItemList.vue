@@ -17,11 +17,8 @@
                     <b-table
                             :items="items"
                             :fields="fields"
-                            :sort-by.sync="sortBy"
-                            :sort-desc.sync="sortDesc"
                             :per-page="perPage"
                             :current-page="currentPage"
-                            sort-icon-left
                             responsive="sm"
                     >
                         <template v-slot:cell(sn)="data">
@@ -49,15 +46,15 @@
                 items: [],
                 fields: [
                     { key: 'sn', label: 'SN' },
-                    { key: 'code', sortable: true },
-                    { key: 'name', sortable: true },
-                    { key: 'quantity', sortable: true },
-                    { key: 'unit', sortable: false },
-                    { key: 'unitAmount', label: 'Rate', sortable: false },
-                    { key: 'discount', sortable: false },
-                    { key: 'totalAmount', sortable: true },
-                    { key: 'customerId', sortable: true },
-                    { key: 'purchasedDate', sortable: true },
+                    { key: 'code' },
+                    { key: 'name' },
+                    { key: 'quantity' },
+                    { key: 'unit'},
+                    { key: 'unitAmount', label: 'Rate' },
+                    { key: 'discount' },
+                    { key: 'totalAmount' },
+                    { key: 'customerId' },
+                    { key: 'purchasedDate' },
                 ],
                 sortBy: 'code',
                 sortDesc: false,

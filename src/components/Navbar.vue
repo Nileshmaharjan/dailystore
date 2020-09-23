@@ -30,8 +30,7 @@
             </li>
             <li class="nav-item">
               <b-dropdown id="dropdown-left" text="Billing" variant="primary" class="m-2">
-                <b-dropdown-item @click="addNewBillItem">Add New Bill</b-dropdown-item>
-                <b-dropdown-item @click="newBillItem">Bill</b-dropdown-item>
+                <b-dropdown-item @click="newBillItem">New Bill</b-dropdown-item>
                 <b-dropdown-item @click="soldItemList">Sold Item List</b-dropdown-item>
 <!--                <b-dropdown-item @click="transactionList">Transaction List</b-dropdown-item>-->
               </b-dropdown>
@@ -80,9 +79,6 @@ export default {
       this.$router.push('/item/add');
     },
 
-    addNewBillItem() {
-      this.$router.push('/bill');
-    },
     newBillItem() {
       this.$router.push('/bill/add');
     },
