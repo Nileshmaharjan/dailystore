@@ -355,11 +355,11 @@
                         totalAmount: this.total,
                         discount: this.discount,
                         itemList: this.items,
-                        customerId: this.items[0].customerId,
-                        purchasedDate:this.items[0].purchasedDate
+                        customerId: this.customerId,
+                        purchasedDate:this.newBillingItem.purchasedDate
                     }
 
-                    db.collection("Bill").doc(new Date().toISOString()).set(obj).then(() => {
+                    db.collection("Bill").add(obj).then(() => {
                         console.log('called')
                     }).catch((error) => {
                         console.log(error);
