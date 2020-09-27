@@ -7,6 +7,9 @@ import { BootstrapVue, IconsPlugin,BootstrapVueIcons } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { ValidationProvider } from 'vee-validate';
+import MultiSelect from 'vue-multiselect';
+import 'vue-multiselect/dist/vue-multiselect.min'
+import 'vue-multiselect/dist/vue-multiselect.min.css'
 
 import { extend } from 'vee-validate';
 import {required, email, min, max} from 'vee-validate/dist/rules';
@@ -49,6 +52,7 @@ extend("greaterThanZero", {
 // Register it globally
 // main.js or any entry file.
 Vue.component('ValidationProvider', ValidationProvider);
+// Vue.component('multi-select', MultiSelect);
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
