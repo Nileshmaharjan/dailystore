@@ -235,8 +235,12 @@
             },
             async getItemDetails() {
                 let self = this;
-                db.collection("items").where("code", "==", `${this.newBillingItem.code}`).orderBy("remainingQuantity").limit(1).get()
-                    .then(function(querySnapshot) {
+                let query = db.collection('items');
+                query = query.where("code", "==", `${this.newBillingItem.code}`);
+                query = query.where('remainingQuantity', '>', '0');
+                query = query.orderBy("remainingQuantity");
+                query = query.limit(1);
+                query.get().then(function(querySnapshot) {
                         if (querySnapshot.empty == false) {
                             querySnapshot.forEach(function(doc) {
                                 self.newBillingItem.name = doc.data().name;
@@ -260,7 +264,10 @@
                 if (isValid) {
                     this.saving = true;
 
-                    await db.collection("items").where("code", "==", `${this.newBillingItem.code}`).orderBy("remainingQuantity").limit(1).get().then(async (query) => {
+                    await db.collection("items")
+                            .where("code", "==", `${this.newBillingItem.code}`)
+                            .orderBy("remainingQuantity")
+                            .limit(1).get().then(async (query) => {
                         const thing = query.docs[0];
                         let currVal = thing.data().remainingQuantity;
 
