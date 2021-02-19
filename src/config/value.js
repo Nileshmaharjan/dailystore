@@ -1,0 +1,2994 @@
+const itemValue = [{
+    text: "A000",
+    value: "A000"
+}, {
+    text: "A001",
+    value: "A001"
+}, {
+    text: "A002",
+    value: "A002"
+}, {
+    text: "A003",
+    value: "A003"
+}, {
+    text: "A004",
+    value: "A004"
+}, {
+    text: "A005",
+    value: "A005"
+}, {
+    text: "A006",
+    value: "A006"
+}, {
+    text: "A007",
+    value: "A007"
+}, {
+    text: "A008",
+    value: "A008"
+}, {
+    text: "A009",
+    value: "A009"
+}, {
+    text: "A0010",
+    value: "A0010"
+}, {
+    text: "A0011",
+    value: "A0011"
+}, {
+    text: "A0012",
+    value: "A0012"
+}, {
+    text: "A0013",
+    value: "A0013"
+}, {
+    text: "A0014",
+    value: "A0014"
+}, {
+    text: "A0015",
+    value: "A0015"
+}, {
+    text: "A0016",
+    value: "A0016"
+}, {
+    text: "A0017",
+    value: "A0017"
+}, {
+    text: "A0018",
+    value: "A0018"
+}, {
+    text: "A0019",
+    value: "A0019"
+}, {
+    text: "A0020",
+    value: "A0020"
+}, {
+    text: "A0021",
+    value: "A0021"
+}, {
+    text: "A0022",
+    value: "A0022"
+}, {
+    text: "A0023",
+    value: "A0023"
+}, {
+    text: "A0024",
+    value: "A0024"
+}, {
+    text: "A0025",
+    value: "A0025"
+}, {
+    text: "A0026",
+    value: "A0026"
+}, {
+    text: "A0027",
+    value: "A0027"
+}, {
+    text: "A0028",
+    value: "A0028"
+}, {
+    text: "A0029",
+    value: "A0029"
+}, {
+    text: "A0030",
+    value: "A0030"
+}, {
+    text: "A0031",
+    value: "A0031"
+}, {
+    text: "A0032",
+    value: "A0032"
+}, {
+    text: "A0033",
+    value: "A0033"
+}, {
+    text: "A0034",
+    value: "A0034"
+}, {
+    text: "A0035",
+    value: "A0035"
+}, {
+    text: "A0036",
+    value: "A0036"
+}, {
+    text: "A0037",
+    value: "A0037"
+}, {
+    text: "A0038",
+    value: "A0038"
+}, {
+    text: "A0039",
+    value: "A0039"
+}, {
+    text: "A0040",
+    value: "A0040"
+}, {
+    text: "A0041",
+    value: "A0041"
+}, {
+    text: "A0042",
+    value: "A0042"
+}, {
+    text: "A0043",
+    value: "A0043"
+}, {
+    text: "A0044",
+    value: "A0044"
+}, {
+    text: "A0045",
+    value: "A0045"
+}, {
+    text: "A0046",
+    value: "A0046"
+}, {
+    text: "A0047",
+    value: "A0047"
+}, {
+    text: "A0048",
+    value: "A0048"
+}, {
+    text: "A0049",
+    value: "A0049"
+}, {
+    text: "A0050",
+    value: "A0050"
+}, {
+    text: "A0051",
+    value: "A0051"
+}, {
+    text: "A0052",
+    value: "A0052"
+}, {
+    text: "A0053",
+    value: "A0053"
+}, {
+    text: "A0054",
+    value: "A0054"
+}, {
+    text: "A0055",
+    value: "A0055"
+}, {
+    text: "A0056",
+    value: "A0056"
+}, {
+    text: "A0057",
+    value: "A0057"
+}, {
+    text: "A0058",
+    value: "A0058"
+}, {
+    text: "A0059",
+    value: "A0059"
+}, {
+    text: "A0060",
+    value: "A0060"
+}, {
+    text: "A0061",
+    value: "A0061"
+}, {
+    text: "A0062",
+    value: "A0062"
+}, {
+    text: "A0063",
+    value: "A0063"
+}, {
+    text: "A0064",
+    value: "A0064"
+}, {
+    text: "A0065",
+    value: "A0065"
+}, {
+    text: "A0066",
+    value: "A0066"
+}, {
+    text: "A0067",
+    value: "A0067"
+}, {
+    text: "A0068",
+    value: "A0068"
+}, {
+    text: "A0069",
+    value: "A0069"
+}, {
+    text: "A0070",
+    value: "A0070"
+}, {
+    text: "A0071",
+    value: "A0071"
+}, {
+    text: "A0072",
+    value: "A0072"
+}, {
+    text: "A0073",
+    value: "A0073"
+}, {
+    text: "A0074",
+    value: "A0074"
+}, {
+    text: "A0075",
+    value: "A0075"
+}, {
+    text: "A0076",
+    value: "A0076"
+}, {
+    text: "A0077",
+    value: "A0077"
+}, {
+    text: "A0078",
+    value: "A0078"
+}, {
+    text: "A0079",
+    value: "A0079"
+}, {
+    text: "A0080",
+    value: "A0080"
+}, {
+    text: "A0081",
+    value: "A0081"
+}, {
+    text: "A0082",
+    value: "A0082"
+}, {
+    text: "A0083",
+    value: "A0083"
+}, {
+    text: "A0084",
+    value: "A0084"
+}, {
+    text: "A0085",
+    value: "A0085"
+}, {
+    text: "A0086",
+    value: "A0086"
+}, {
+    text: "A0087",
+    value: "A0087"
+}, {
+    text: "A0088",
+    value: "A0088"
+}, {
+    text: "A0089",
+    value: "A0089"
+}, {
+    text: "A0090",
+    value: "A0090"
+}, {
+    text: "A0091",
+    value: "A0091"
+}, {
+    text: "A0092",
+    value: "A0092"
+}, {
+    text: "A0093",
+    value: "A0093"
+}, {
+    text: "A0094",
+    value: "A0094"
+}, {
+    text: "A0095",
+    value: "A0095"
+}, {
+    text: "A0096",
+    value: "A0096"
+}, {
+    text: "A0097",
+    value: "A0097"
+}, {
+    text: "A0098",
+    value: "A0098"
+}, {
+    text: "A0099",
+    value: "A0099"
+}, {
+    text: "A00100",
+    value: "A00100"
+}, {
+    text: "A00101",
+    value: "A00101"
+}, {
+    text: "A00102",
+    value: "A00102"
+}, {
+    text: "A00103",
+    value: "A00103"
+}, {
+    text: "A00104",
+    value: "A00104"
+}, {
+    text: "A00105",
+    value: "A00105"
+}, {
+    text: "A00106",
+    value: "A00106"
+}, {
+    text: "A00107",
+    value: "A00107"
+}, {
+    text: "A00108",
+    value: "A00108"
+}, {
+    text: "A00109",
+    value: "A00109"
+}, {
+    text: "A00110",
+    value: "A00110"
+}, {
+    text: "A00111",
+    value: "A00111"
+}, {
+    text: "A00112",
+    value: "A00112"
+}, {
+    text: "A00113",
+    value: "A00113"
+}, {
+    text: "A00114",
+    value: "A00114"
+}, {
+    text: "A00115",
+    value: "A00115"
+}, {
+    text: "A00116",
+    value: "A00116"
+}, {
+    text: "A00117",
+    value: "A00117"
+}, {
+    text: "A00118",
+    value: "A00118"
+}, {
+    text: "A00119",
+    value: "A00119"
+}, {
+    text: "A00120",
+    value: "A00120"
+}, {
+    text: "A00121",
+    value: "A00121"
+}, {
+    text: "A00122",
+    value: "A00122"
+}, {
+    text: "A00123",
+    value: "A00123"
+}, {
+    text: "A00124",
+    value: "A00124"
+}, {
+    text: "A00125",
+    value: "A00125"
+}, {
+    text: "A00126",
+    value: "A00126"
+}, {
+    text: "A00127",
+    value: "A00127"
+}, {
+    text: "A00128",
+    value: "A00128"
+}, {
+    text: "A00129",
+    value: "A00129"
+}, {
+    text: "A00130",
+    value: "A00130"
+}, {
+    text: "A00131",
+    value: "A00131"
+}, {
+    text: "A00132",
+    value: "A00132"
+}, {
+    text: "A00133",
+    value: "A00133"
+}, {
+    text: "A00134",
+    value: "A00134"
+}, {
+    text: "A00135",
+    value: "A00135"
+}, {
+    text: "A00136",
+    value: "A00136"
+}, {
+    text: "A00137",
+    value: "A00137"
+}, {
+    text: "A00138",
+    value: "A00138"
+}, {
+    text: "A00139",
+    value: "A00139"
+}, {
+    text: "A00140",
+    value: "A00140"
+}, {
+    text: "A00141",
+    value: "A00141"
+}, {
+    text: "A00142",
+    value: "A00142"
+}, {
+    text: "A00143",
+    value: "A00143"
+}, {
+    text: "A00144",
+    value: "A00144"
+}, {
+    text: "A00145",
+    value: "A00145"
+}, {
+    text: "A00146",
+    value: "A00146"
+}, {
+    text: "A00147",
+    value: "A00147"
+}, {
+    text: "A00148",
+    value: "A00148"
+}, {
+    text: "A00149",
+    value: "A00149"
+}, {
+    text: "A00150",
+    value: "A00150"
+}, {
+    text: "A00151",
+    value: "A00151"
+}, {
+    text: "A00152",
+    value: "A00152"
+}, {
+    text: "A00153",
+    value: "A00153"
+}, {
+    text: "A00154",
+    value: "A00154"
+}, {
+    text: "A00155",
+    value: "A00155"
+}, {
+    text: "A00156",
+    value: "A00156"
+}, {
+    text: "A00157",
+    value: "A00157"
+}, {
+    text: "A00158",
+    value: "A00158"
+}, {
+    text: "A00159",
+    value: "A00159"
+}, {
+    text: "A00160",
+    value: "A00160"
+}, {
+    text: "A00161",
+    value: "A00161"
+}, {
+    text: "A00162",
+    value: "A00162"
+}, {
+    text: "A00163",
+    value: "A00163"
+}, {
+    text: "A00164",
+    value: "A00164"
+}, {
+    text: "A00165",
+    value: "A00165"
+}, {
+    text: "A00166",
+    value: "A00166"
+}, {
+    text: "A00167",
+    value: "A00167"
+}, {
+    text: "A00168",
+    value: "A00168"
+}, {
+    text: "A00169",
+    value: "A00169"
+}, {
+    text: "A00170",
+    value: "A00170"
+}, {
+    text: "A00171",
+    value: "A00171"
+}, {
+    text: "A00172",
+    value: "A00172"
+}, {
+    text: "A00173",
+    value: "A00173"
+}, {
+    text: "A00174",
+    value: "A00174"
+}, {
+    text: "A00175",
+    value: "A00175"
+}, {
+    text: "A00176",
+    value: "A00176"
+}, {
+    text: "A00177",
+    value: "A00177"
+}, {
+    text: "A00178",
+    value: "A00178"
+}, {
+    text: "A00179",
+    value: "A00179"
+}, {
+    text: "A00180",
+    value: "A00180"
+}, {
+    text: "A00181",
+    value: "A00181"
+}, {
+    text: "A00182",
+    value: "A00182"
+}, {
+    text: "A00183",
+    value: "A00183"
+}, {
+    text: "A00184",
+    value: "A00184"
+}, {
+    text: "A00185",
+    value: "A00185"
+}, {
+    text: "A00186",
+    value: "A00186"
+}, {
+    text: "A00187",
+    value: "A00187"
+}, {
+    text: "A00188",
+    value: "A00188"
+}, {
+    text: "A00189",
+    value: "A00189"
+}, {
+    text: "A00190",
+    value: "A00190"
+}, {
+    text: "A00191",
+    value: "A00191"
+}, {
+    text: "A00192",
+    value: "A00192"
+}, {
+    text: "A00193",
+    value: "A00193"
+}, {
+    text: "A00194",
+    value: "A00194"
+}, {
+    text: "A00195",
+    value: "A00195"
+}, {
+    text: "A00196",
+    value: "A00196"
+}, {
+    text: "A00197",
+    value: "A00197"
+}, {
+    text: "A00198",
+    value: "A00198"
+}, {
+    text: "A00199",
+    value: "A00199"
+}, {
+    text: "A00200",
+    value: "A00200"
+}, {
+    text: "A00201",
+    value: "A00201"
+}, {
+    text: "A00202",
+    value: "A00202"
+}, {
+    text: "A00203",
+    value: "A00203"
+}, {
+    text: "A00204",
+    value: "A00204"
+}, {
+    text: "A00205",
+    value: "A00205"
+}, {
+    text: "A00206",
+    value: "A00206"
+}, {
+    text: "A00207",
+    value: "A00207"
+}, {
+    text: "A00208",
+    value: "A00208"
+}, {
+    text: "A00209",
+    value: "A00209"
+}, {
+    text: "A00210",
+    value: "A00210"
+}, {
+    text: "A00211",
+    value: "A00211"
+}, {
+    text: "A00212",
+    value: "A00212"
+}, {
+    text: "A00213",
+    value: "A00213"
+}, {
+    text: "A00214",
+    value: "A00214"
+}, {
+    text: "A00215",
+    value: "A00215"
+}, {
+    text: "A00216",
+    value: "A00216"
+}, {
+    text: "A00217",
+    value: "A00217"
+}, {
+    text: "A00218",
+    value: "A00218"
+}, {
+    text: "A00219",
+    value: "A00219"
+}, {
+    text: "A00220",
+    value: "A00220"
+}, {
+    text: "A00221",
+    value: "A00221"
+}, {
+    text: "A00222",
+    value: "A00222"
+}, {
+    text: "A00223",
+    value: "A00223"
+}, {
+    text: "A00224",
+    value: "A00224"
+}, {
+    text: "A00225",
+    value: "A00225"
+}, {
+    text: "A00226",
+    value: "A00226"
+}, {
+    text: "A00227",
+    value: "A00227"
+}, {
+    text: "A00228",
+    value: "A00228"
+}, {
+    text: "A00229",
+    value: "A00229"
+}, {
+    text: "A00230",
+    value: "A00230"
+}, {
+    text: "A00231",
+    value: "A00231"
+}, {
+    text: "A00232",
+    value: "A00232"
+}, {
+    text: "A00233",
+    value: "A00233"
+}, {
+    text: "A00234",
+    value: "A00234"
+}, {
+    text: "A00235",
+    value: "A00235"
+}, {
+    text: "A00236",
+    value: "A00236"
+}, {
+    text: "A00237",
+    value: "A00237"
+}, {
+    text: "A00238",
+    value: "A00238"
+}, {
+    text: "A00239",
+    value: "A00239"
+}, {
+    text: "A00240",
+    value: "A00240"
+}, {
+    text: "A00241",
+    value: "A00241"
+}, {
+    text: "A00242",
+    value: "A00242"
+}, {
+    text: "A00243",
+    value: "A00243"
+}, {
+    text: "A00244",
+    value: "A00244"
+}, {
+    text: "A00245",
+    value: "A00245"
+}, {
+    text: "A00246",
+    value: "A00246"
+}, {
+    text: "A00247",
+    value: "A00247"
+}, {
+    text: "A00248",
+    value: "A00248"
+}, {
+    text: "A00249",
+    value: "A00249"
+}, {
+    text: "A00250",
+    value: "A00250"
+}, {
+    text: "A00251",
+    value: "A00251"
+}, {
+    text: "A00252",
+    value: "A00252"
+}, {
+    text: "A00253",
+    value: "A00253"
+}, {
+    text: "A00254",
+    value: "A00254"
+}, {
+    text: "A00255",
+    value: "A00255"
+}, {
+    text: "A00256",
+    value: "A00256"
+}, {
+    text: "A00257",
+    value: "A00257"
+}, {
+    text: "A00258",
+    value: "A00258"
+}, {
+    text: "A00259",
+    value: "A00259"
+}, {
+    text: "A00260",
+    value: "A00260"
+}, {
+    text: "A00261",
+    value: "A00261"
+}, {
+    text: "A00262",
+    value: "A00262"
+}, {
+    text: "A00263",
+    value: "A00263"
+}, {
+    text: "A00264",
+    value: "A00264"
+}, {
+    text: "A00265",
+    value: "A00265"
+}, {
+    text: "A00266",
+    value: "A00266"
+}, {
+    text: "A00267",
+    value: "A00267"
+}, {
+    text: "A00268",
+    value: "A00268"
+}, {
+    text: "A00269",
+    value: "A00269"
+}, {
+    text: "A00270",
+    value: "A00270"
+}, {
+    text: "A00271",
+    value: "A00271"
+}, {
+    text: "A00272",
+    value: "A00272"
+}, {
+    text: "A00273",
+    value: "A00273"
+}, {
+    text: "A00274",
+    value: "A00274"
+}, {
+    text: "A00275",
+    value: "A00275"
+}, {
+    text: "A00276",
+    value: "A00276"
+}, {
+    text: "A00277",
+    value: "A00277"
+}, {
+    text: "A00278",
+    value: "A00278"
+}, {
+    text: "A00279",
+    value: "A00279"
+}, {
+    text: "A00280",
+    value: "A00280"
+}, {
+    text: "A00281",
+    value: "A00281"
+}, {
+    text: "A00282",
+    value: "A00282"
+}, {
+    text: "A00283",
+    value: "A00283"
+}, {
+    text: "A00284",
+    value: "A00284"
+}, {
+    text: "A00285",
+    value: "A00285"
+}, {
+    text: "A00286",
+    value: "A00286"
+}, {
+    text: "A00287",
+    value: "A00287"
+}, {
+    text: "A00288",
+    value: "A00288"
+}, {
+    text: "A00289",
+    value: "A00289"
+}, {
+    text: "A00290",
+    value: "A00290"
+}, {
+    text: "A00291",
+    value: "A00291"
+}, {
+    text: "A00292",
+    value: "A00292"
+}, {
+    text: "A00293",
+    value: "A00293"
+}, {
+    text: "A00294",
+    value: "A00294"
+}, {
+    text: "A00295",
+    value: "A00295"
+}, {
+    text: "A00296",
+    value: "A00296"
+}, {
+    text: "A00297",
+    value: "A00297"
+}, {
+    text: "A00298",
+    value: "A00298"
+}, {
+    text: "A00299",
+    value: "A00299"
+}, {
+    text: "A00300",
+    value: "A00300"
+}, {
+    text: "A00301",
+    value: "A00301"
+}, {
+    text: "A00302",
+    value: "A00302"
+}, {
+    text: "A00303",
+    value: "A00303"
+}, {
+    text: "A00304",
+    value: "A00304"
+}, {
+    text: "A00305",
+    value: "A00305"
+}, {
+    text: "A00306",
+    value: "A00306"
+}, {
+    text: "A00307",
+    value: "A00307"
+}, {
+    text: "A00308",
+    value: "A00308"
+}, {
+    text: "A00309",
+    value: "A00309"
+}, {
+    text: "A00310",
+    value: "A00310"
+}, {
+    text: "A00311",
+    value: "A00311"
+}, {
+    text: "A00312",
+    value: "A00312"
+}, {
+    text: "A00313",
+    value: "A00313"
+}, {
+    text: "A00314",
+    value: "A00314"
+}, {
+    text: "A00315",
+    value: "A00315"
+}, {
+    text: "A00316",
+    value: "A00316"
+}, {
+    text: "A00317",
+    value: "A00317"
+}, {
+    text: "A00318",
+    value: "A00318"
+}, {
+    text: "A00319",
+    value: "A00319"
+}, {
+    text: "A00320",
+    value: "A00320"
+}, {
+    text: "A00321",
+    value: "A00321"
+}, {
+    text: "A00322",
+    value: "A00322"
+}, {
+    text: "A00323",
+    value: "A00323"
+}, {
+    text: "A00324",
+    value: "A00324"
+}, {
+    text: "A00325",
+    value: "A00325"
+}, {
+    text: "A00326",
+    value: "A00326"
+}, {
+    text: "A00327",
+    value: "A00327"
+}, {
+    text: "A00328",
+    value: "A00328"
+}, {
+    text: "A00329",
+    value: "A00329"
+}, {
+    text: "A00330",
+    value: "A00330"
+}, {
+    text: "A00331",
+    value: "A00331"
+}, {
+    text: "A00332",
+    value: "A00332"
+}, {
+    text: "A00333",
+    value: "A00333"
+}, {
+    text: "A00334",
+    value: "A00334"
+}, {
+    text: "A00335",
+    value: "A00335"
+}, {
+    text: "A00336",
+    value: "A00336"
+}, {
+    text: "A00337",
+    value: "A00337"
+}, {
+    text: "A00338",
+    value: "A00338"
+}, {
+    text: "A00339",
+    value: "A00339"
+}, {
+    text: "A00340",
+    value: "A00340"
+}, {
+    text: "A00341",
+    value: "A00341"
+}, {
+    text: "A00342",
+    value: "A00342"
+}, {
+    text: "A00343",
+    value: "A00343"
+}, {
+    text: "A00344",
+    value: "A00344"
+}, {
+    text: "A00345",
+    value: "A00345"
+}, {
+    text: "A00346",
+    value: "A00346"
+}, {
+    text: "A00347",
+    value: "A00347"
+}, {
+    text: "A00348",
+    value: "A00348"
+}, {
+    text: "A00349",
+    value: "A00349"
+}, {
+    text: "A00350",
+    value: "A00350"
+}, {
+    text: "A00351",
+    value: "A00351"
+}, {
+    text: "A00352",
+    value: "A00352"
+}, {
+    text: "A00353",
+    value: "A00353"
+}, {
+    text: "A00354",
+    value: "A00354"
+}, {
+    text: "A00355",
+    value: "A00355"
+}, {
+    text: "A00356",
+    value: "A00356"
+}, {
+    text: "A00357",
+    value: "A00357"
+}, {
+    text: "A00358",
+    value: "A00358"
+}, {
+    text: "A00359",
+    value: "A00359"
+}, {
+    text: "A00360",
+    value: "A00360"
+}, {
+    text: "A00361",
+    value: "A00361"
+}, {
+    text: "A00362",
+    value: "A00362"
+}, {
+    text: "A00363",
+    value: "A00363"
+}, {
+    text: "A00364",
+    value: "A00364"
+}, {
+    text: "A00365",
+    value: "A00365"
+}, {
+    text: "A00366",
+    value: "A00366"
+}, {
+    text: "A00367",
+    value: "A00367"
+}, {
+    text: "A00368",
+    value: "A00368"
+}, {
+    text: "A00369",
+    value: "A00369"
+}, {
+    text: "A00370",
+    value: "A00370"
+}, {
+    text: "A00371",
+    value: "A00371"
+}, {
+    text: "A00372",
+    value: "A00372"
+}, {
+    text: "A00373",
+    value: "A00373"
+}, {
+    text: "A00374",
+    value: "A00374"
+}, {
+    text: "A00375",
+    value: "A00375"
+}, {
+    text: "A00376",
+    value: "A00376"
+}, {
+    text: "A00377",
+    value: "A00377"
+}, {
+    text: "A00378",
+    value: "A00378"
+}, {
+    text: "A00379",
+    value: "A00379"
+}, {
+    text: "A00380",
+    value: "A00380"
+}, {
+    text: "A00381",
+    value: "A00381"
+}, {
+    text: "A00382",
+    value: "A00382"
+}, {
+    text: "A00383",
+    value: "A00383"
+}, {
+    text: "A00384",
+    value: "A00384"
+}, {
+    text: "A00385",
+    value: "A00385"
+}, {
+    text: "A00386",
+    value: "A00386"
+}, {
+    text: "A00387",
+    value: "A00387"
+}, {
+    text: "A00388",
+    value: "A00388"
+}, {
+    text: "A00389",
+    value: "A00389"
+}, {
+    text: "A00390",
+    value: "A00390"
+}, {
+    text: "A00391",
+    value: "A00391"
+}, {
+    text: "A00392",
+    value: "A00392"
+}, {
+    text: "A00393",
+    value: "A00393"
+}, {
+    text: "A00394",
+    value: "A00394"
+}, {
+    text: "A00395",
+    value: "A00395"
+}, {
+    text: "A00396",
+    value: "A00396"
+}, {
+    text: "A00397",
+    value: "A00397"
+}, {
+    text: "A00398",
+    value: "A00398"
+}, {
+    text: "A00399",
+    value: "A00399"
+}, {
+    text: "A00400",
+    value: "A00400"
+}, {
+    text: "A00401",
+    value: "A00401"
+}, {
+    text: "A00402",
+    value: "A00402"
+}, {
+    text: "A00403",
+    value: "A00403"
+}, {
+    text: "A00404",
+    value: "A00404"
+}, {
+    text: "A00405",
+    value: "A00405"
+}, {
+    text: "A00406",
+    value: "A00406"
+}, {
+    text: "A00407",
+    value: "A00407"
+}, {
+    text: "A00408",
+    value: "A00408"
+}, {
+    text: "A00409",
+    value: "A00409"
+}, {
+    text: "A00410",
+    value: "A00410"
+}, {
+    text: "A00411",
+    value: "A00411"
+}, {
+    text: "A00412",
+    value: "A00412"
+}, {
+    text: "A00413",
+    value: "A00413"
+}, {
+    text: "A00414",
+    value: "A00414"
+}, {
+    text: "A00415",
+    value: "A00415"
+}, {
+    text: "A00416",
+    value: "A00416"
+}, {
+    text: "A00417",
+    value: "A00417"
+}, {
+    text: "A00418",
+    value: "A00418"
+}, {
+    text: "A00419",
+    value: "A00419"
+}, {
+    text: "A00420",
+    value: "A00420"
+}, {
+    text: "A00421",
+    value: "A00421"
+}, {
+    text: "A00422",
+    value: "A00422"
+}, {
+    text: "A00423",
+    value: "A00423"
+}, {
+    text: "A00424",
+    value: "A00424"
+}, {
+    text: "A00425",
+    value: "A00425"
+}, {
+    text: "A00426",
+    value: "A00426"
+}, {
+    text: "A00427",
+    value: "A00427"
+}, {
+    text: "A00428",
+    value: "A00428"
+}, {
+    text: "A00429",
+    value: "A00429"
+}, {
+    text: "A00430",
+    value: "A00430"
+}, {
+    text: "A00431",
+    value: "A00431"
+}, {
+    text: "A00432",
+    value: "A00432"
+}, {
+    text: "A00433",
+    value: "A00433"
+}, {
+    text: "A00434",
+    value: "A00434"
+}, {
+    text: "A00435",
+    value: "A00435"
+}, {
+    text: "A00436",
+    value: "A00436"
+}, {
+    text: "A00437",
+    value: "A00437"
+}, {
+    text: "A00438",
+    value: "A00438"
+}, {
+    text: "A00439",
+    value: "A00439"
+}, {
+    text: "A00440",
+    value: "A00440"
+}, {
+    text: "A00441",
+    value: "A00441"
+}, {
+    text: "A00442",
+    value: "A00442"
+}, {
+    text: "A00443",
+    value: "A00443"
+}, {
+    text: "A00444",
+    value: "A00444"
+}, {
+    text: "A00445",
+    value: "A00445"
+}, {
+    text: "A00446",
+    value: "A00446"
+}, {
+    text: "A00447",
+    value: "A00447"
+}, {
+    text: "A00448",
+    value: "A00448"
+}, {
+    text: "A00449",
+    value: "A00449"
+}, {
+    text: "A00450",
+    value: "A00450"
+}, {
+    text: "A00451",
+    value: "A00451"
+}, {
+    text: "A00452",
+    value: "A00452"
+}, {
+    text: "A00453",
+    value: "A00453"
+}, {
+    text: "A00454",
+    value: "A00454"
+}, {
+    text: "A00455",
+    value: "A00455"
+}, {
+    text: "A00456",
+    value: "A00456"
+}, {
+    text: "A00457",
+    value: "A00457"
+}, {
+    text: "A00458",
+    value: "A00458"
+}, {
+    text: "A00459",
+    value: "A00459"
+}, {
+    text: "A00460",
+    value: "A00460"
+}, {
+    text: "A00461",
+    value: "A00461"
+}, {
+    text: "A00462",
+    value: "A00462"
+}, {
+    text: "A00463",
+    value: "A00463"
+}, {
+    text: "A00464",
+    value: "A00464"
+}, {
+    text: "A00465",
+    value: "A00465"
+}, {
+    text: "A00466",
+    value: "A00466"
+}, {
+    text: "A00467",
+    value: "A00467"
+}, {
+    text: "A00468",
+    value: "A00468"
+}, {
+    text: "A00469",
+    value: "A00469"
+}, {
+    text: "A00470",
+    value: "A00470"
+}, {
+    text: "A00471",
+    value: "A00471"
+}, {
+    text: "A00472",
+    value: "A00472"
+}, {
+    text: "A00473",
+    value: "A00473"
+}, {
+    text: "A00474",
+    value: "A00474"
+}, {
+    text: "A00475",
+    value: "A00475"
+}, {
+    text: "A00476",
+    value: "A00476"
+}, {
+    text: "A00477",
+    value: "A00477"
+}, {
+    text: "A00478",
+    value: "A00478"
+}, {
+    text: "A00479",
+    value: "A00479"
+}, {
+    text: "A00480",
+    value: "A00480"
+}, {
+    text: "A00481",
+    value: "A00481"
+}, {
+    text: "A00482",
+    value: "A00482"
+}, {
+    text: "A00483",
+    value: "A00483"
+}, {
+    text: "A00484",
+    value: "A00484"
+}, {
+    text: "A00485",
+    value: "A00485"
+}, {
+    text: "A00486",
+    value: "A00486"
+}, {
+    text: "A00487",
+    value: "A00487"
+}, {
+    text: "A00488",
+    value: "A00488"
+}, {
+    text: "A00489",
+    value: "A00489"
+}, {
+    text: "A00490",
+    value: "A00490"
+}, {
+    text: "A00491",
+    value: "A00491"
+}, {
+    text: "A00492",
+    value: "A00492"
+}, {
+    text: "A00493",
+    value: "A00493"
+}, {
+    text: "A00494",
+    value: "A00494"
+}, {
+    text: "A00495",
+    value: "A00495"
+}, {
+    text: "A00496",
+    value: "A00496"
+}, {
+    text: "A00497",
+    value: "A00497"
+}, {
+    text: "A00498",
+    value: "A00498"
+}, {
+    text: "A00499",
+    value: "A00499"
+}, {
+    text: "A00500",
+    value: "A00500"
+}, {
+    text: "A00501",
+    value: "A00501"
+}, {
+    text: "A00502",
+    value: "A00502"
+}, {
+    text: "A00503",
+    value: "A00503"
+}, {
+    text: "A00504",
+    value: "A00504"
+}, {
+    text: "A00505",
+    value: "A00505"
+}, {
+    text: "A00506",
+    value: "A00506"
+}, {
+    text: "A00507",
+    value: "A00507"
+}, {
+    text: "A00508",
+    value: "A00508"
+}, {
+    text: "A00509",
+    value: "A00509"
+}, {
+    text: "A00510",
+    value: "A00510"
+}, {
+    text: "A00511",
+    value: "A00511"
+}, {
+    text: "A00512",
+    value: "A00512"
+}, {
+    text: "A00513",
+    value: "A00513"
+}, {
+    text: "A00514",
+    value: "A00514"
+}, {
+    text: "A00515",
+    value: "A00515"
+}, {
+    text: "A00516",
+    value: "A00516"
+}, {
+    text: "A00517",
+    value: "A00517"
+}, {
+    text: "A00518",
+    value: "A00518"
+}, {
+    text: "A00519",
+    value: "A00519"
+}, {
+    text: "A00520",
+    value: "A00520"
+}, {
+    text: "A00521",
+    value: "A00521"
+}, {
+    text: "A00522",
+    value: "A00522"
+}, {
+    text: "A00523",
+    value: "A00523"
+}, {
+    text: "A00524",
+    value: "A00524"
+}, {
+    text: "A00525",
+    value: "A00525"
+}, {
+    text: "A00526",
+    value: "A00526"
+}, {
+    text: "A00527",
+    value: "A00527"
+}, {
+    text: "A00528",
+    value: "A00528"
+}, {
+    text: "A00529",
+    value: "A00529"
+}, {
+    text: "A00530",
+    value: "A00530"
+}, {
+    text: "A00531",
+    value: "A00531"
+}, {
+    text: "A00532",
+    value: "A00532"
+}, {
+    text: "A00533",
+    value: "A00533"
+}, {
+    text: "A00534",
+    value: "A00534"
+}, {
+    text: "A00535",
+    value: "A00535"
+}, {
+    text: "A00536",
+    value: "A00536"
+}, {
+    text: "A00537",
+    value: "A00537"
+}, {
+    text: "A00538",
+    value: "A00538"
+}, {
+    text: "A00539",
+    value: "A00539"
+}, {
+    text: "A00540",
+    value: "A00540"
+}, {
+    text: "A00541",
+    value: "A00541"
+}, {
+    text: "A00542",
+    value: "A00542"
+}, {
+    text: "A00543",
+    value: "A00543"
+}, {
+    text: "A00544",
+    value: "A00544"
+}, {
+    text: "A00545",
+    value: "A00545"
+}, {
+    text: "A00546",
+    value: "A00546"
+}, {
+    text: "A00547",
+    value: "A00547"
+}, {
+    text: "A00548",
+    value: "A00548"
+}, {
+    text: "A00549",
+    value: "A00549"
+}, {
+    text: "A00550",
+    value: "A00550"
+}, {
+    text: "A00551",
+    value: "A00551"
+}, {
+    text: "A00552",
+    value: "A00552"
+}, {
+    text: "A00553",
+    value: "A00553"
+}, {
+    text: "A00554",
+    value: "A00554"
+}, {
+    text: "A00555",
+    value: "A00555"
+}, {
+    text: "A00556",
+    value: "A00556"
+}, {
+    text: "A00557",
+    value: "A00557"
+}, {
+    text: "A00558",
+    value: "A00558"
+}, {
+    text: "A00559",
+    value: "A00559"
+}, {
+    text: "A00560",
+    value: "A00560"
+}, {
+    text: "A00561",
+    value: "A00561"
+}, {
+    text: "A00562",
+    value: "A00562"
+}, {
+    text: "A00563",
+    value: "A00563"
+}, {
+    text: "A00564",
+    value: "A00564"
+}, {
+    text: "A00565",
+    value: "A00565"
+}, {
+    text: "A00566",
+    value: "A00566"
+}, {
+    text: "A00567",
+    value: "A00567"
+}, {
+    text: "A00568",
+    value: "A00568"
+}, {
+    text: "A00569",
+    value: "A00569"
+}, {
+    text: "A00570",
+    value: "A00570"
+}, {
+    text: "A00571",
+    value: "A00571"
+}, {
+    text: "A00572",
+    value: "A00572"
+}, {
+    text: "A00573",
+    value: "A00573"
+}, {
+    text: "A00574",
+    value: "A00574"
+}, {
+    text: "A00575",
+    value: "A00575"
+}, {
+    text: "A00576",
+    value: "A00576"
+}, {
+    text: "A00577",
+    value: "A00577"
+}, {
+    text: "A00578",
+    value: "A00578"
+}, {
+    text: "A00579",
+    value: "A00579"
+}, {
+    text: "A00580",
+    value: "A00580"
+}, {
+    text: "A00581",
+    value: "A00581"
+}, {
+    text: "A00582",
+    value: "A00582"
+}, {
+    text: "A00583",
+    value: "A00583"
+}, {
+    text: "A00584",
+    value: "A00584"
+}, {
+    text: "A00585",
+    value: "A00585"
+}, {
+    text: "A00586",
+    value: "A00586"
+}, {
+    text: "A00587",
+    value: "A00587"
+}, {
+    text: "A00588",
+    value: "A00588"
+}, {
+    text: "A00589",
+    value: "A00589"
+}, {
+    text: "A00590",
+    value: "A00590"
+}, {
+    text: "A00591",
+    value: "A00591"
+}, {
+    text: "A00592",
+    value: "A00592"
+}, {
+    text: "A00593",
+    value: "A00593"
+}, {
+    text: "A00594",
+    value: "A00594"
+}, {
+    text: "A00595",
+    value: "A00595"
+}, {
+    text: "A00596",
+    value: "A00596"
+}, {
+    text: "A00597",
+    value: "A00597"
+}, {
+    text: "A00598",
+    value: "A00598"
+}, {
+    text: "A00599",
+    value: "A00599"
+}, {
+    text: "A00600",
+    value: "A00600"
+}, {
+    text: "A00601",
+    value: "A00601"
+}, {
+    text: "A00602",
+    value: "A00602"
+}, {
+    text: "A00603",
+    value: "A00603"
+}, {
+    text: "A00604",
+    value: "A00604"
+}, {
+    text: "A00605",
+    value: "A00605"
+}, {
+    text: "A00606",
+    value: "A00606"
+}, {
+    text: "A00607",
+    value: "A00607"
+}, {
+    text: "A00608",
+    value: "A00608"
+}, {
+    text: "A00609",
+    value: "A00609"
+}, {
+    text: "A00610",
+    value: "A00610"
+}, {
+    text: "A00611",
+    value: "A00611"
+}, {
+    text: "A00612",
+    value: "A00612"
+}, {
+    text: "A00613",
+    value: "A00613"
+}, {
+    text: "A00614",
+    value: "A00614"
+}, {
+    text: "A00615",
+    value: "A00615"
+}, {
+    text: "A00616",
+    value: "A00616"
+}, {
+    text: "A00617",
+    value: "A00617"
+}, {
+    text: "A00618",
+    value: "A00618"
+}, {
+    text: "A00619",
+    value: "A00619"
+}, {
+    text: "A00620",
+    value: "A00620"
+}, {
+    text: "A00621",
+    value: "A00621"
+}, {
+    text: "A00622",
+    value: "A00622"
+}, {
+    text: "A00623",
+    value: "A00623"
+}, {
+    text: "A00624",
+    value: "A00624"
+}, {
+    text: "A00625",
+    value: "A00625"
+}, {
+    text: "A00626",
+    value: "A00626"
+}, {
+    text: "A00627",
+    value: "A00627"
+}, {
+    text: "A00628",
+    value: "A00628"
+}, {
+    text: "A00629",
+    value: "A00629"
+}, {
+    text: "A00630",
+    value: "A00630"
+}, {
+    text: "A00631",
+    value: "A00631"
+}, {
+    text: "A00632",
+    value: "A00632"
+}, {
+    text: "A00633",
+    value: "A00633"
+}, {
+    text: "A00634",
+    value: "A00634"
+}, {
+    text: "A00635",
+    value: "A00635"
+}, {
+    text: "A00636",
+    value: "A00636"
+}, {
+    text: "A00637",
+    value: "A00637"
+}, {
+    text: "A00638",
+    value: "A00638"
+}, {
+    text: "A00639",
+    value: "A00639"
+}, {
+    text: "A00640",
+    value: "A00640"
+}, {
+    text: "A00641",
+    value: "A00641"
+}, {
+    text: "A00642",
+    value: "A00642"
+}, {
+    text: "A00643",
+    value: "A00643"
+}, {
+    text: "A00644",
+    value: "A00644"
+}, {
+    text: "A00645",
+    value: "A00645"
+}, {
+    text: "A00646",
+    value: "A00646"
+}, {
+    text: "A00647",
+    value: "A00647"
+}, {
+    text: "A00648",
+    value: "A00648"
+}, {
+    text: "A00649",
+    value: "A00649"
+}, {
+    text: "A00650",
+    value: "A00650"
+}, {
+    text: "A00651",
+    value: "A00651"
+}, {
+    text: "A00652",
+    value: "A00652"
+}, {
+    text: "A00653",
+    value: "A00653"
+}, {
+    text: "A00654",
+    value: "A00654"
+}, {
+    text: "A00655",
+    value: "A00655"
+}, {
+    text: "A00656",
+    value: "A00656"
+}, {
+    text: "A00657",
+    value: "A00657"
+}, {
+    text: "A00658",
+    value: "A00658"
+}, {
+    text: "A00659",
+    value: "A00659"
+}, {
+    text: "A00660",
+    value: "A00660"
+}, {
+    text: "A00661",
+    value: "A00661"
+}, {
+    text: "A00662",
+    value: "A00662"
+}, {
+    text: "A00663",
+    value: "A00663"
+}, {
+    text: "A00664",
+    value: "A00664"
+}, {
+    text: "A00665",
+    value: "A00665"
+}, {
+    text: "A00666",
+    value: "A00666"
+}, {
+    text: "A00667",
+    value: "A00667"
+}, {
+    text: "A00668",
+    value: "A00668"
+}, {
+    text: "A00669",
+    value: "A00669"
+}, {
+    text: "A00670",
+    value: "A00670"
+}, {
+    text: "A00671",
+    value: "A00671"
+}, {
+    text: "A00672",
+    value: "A00672"
+}, {
+    text: "A00673",
+    value: "A00673"
+}, {
+    text: "A00674",
+    value: "A00674"
+}, {
+    text: "A00675",
+    value: "A00675"
+}, {
+    text: "A00676",
+    value: "A00676"
+}, {
+    text: "A00677",
+    value: "A00677"
+}, {
+    text: "A00678",
+    value: "A00678"
+}, {
+    text: "A00679",
+    value: "A00679"
+}, {
+    text: "A00680",
+    value: "A00680"
+}, {
+    text: "A00681",
+    value: "A00681"
+}, {
+    text: "A00682",
+    value: "A00682"
+}, {
+    text: "A00683",
+    value: "A00683"
+}, {
+    text: "A00684",
+    value: "A00684"
+}, {
+    text: "A00685",
+    value: "A00685"
+}, {
+    text: "A00686",
+    value: "A00686"
+}, {
+    text: "A00687",
+    value: "A00687"
+}, {
+    text: "A00688",
+    value: "A00688"
+}, {
+    text: "A00689",
+    value: "A00689"
+}, {
+    text: "A00690",
+    value: "A00690"
+}, {
+    text: "A00691",
+    value: "A00691"
+}, {
+    text: "A00692",
+    value: "A00692"
+}, {
+    text: "A00693",
+    value: "A00693"
+}, {
+    text: "A00694",
+    value: "A00694"
+}, {
+    text: "A00695",
+    value: "A00695"
+}, {
+    text: "A00696",
+    value: "A00696"
+}, {
+    text: "A00697",
+    value: "A00697"
+}, {
+    text: "A00698",
+    value: "A00698"
+}, {
+    text: "A00699",
+    value: "A00699"
+}, {
+    text: "A00700",
+    value: "A00700"
+}, {
+    text: "A00701",
+    value: "A00701"
+}, {
+    text: "A00702",
+    value: "A00702"
+}, {
+    text: "A00703",
+    value: "A00703"
+}, {
+    text: "A00704",
+    value: "A00704"
+}, {
+    text: "A00705",
+    value: "A00705"
+}, {
+    text: "A00706",
+    value: "A00706"
+}, {
+    text: "A00707",
+    value: "A00707"
+}, {
+    text: "A00708",
+    value: "A00708"
+}, {
+    text: "A00709",
+    value: "A00709"
+}, {
+    text: "A00710",
+    value: "A00710"
+}, {
+    text: "A00711",
+    value: "A00711"
+}, {
+    text: "A00712",
+    value: "A00712"
+}, {
+    text: "A00713",
+    value: "A00713"
+}, {
+    text: "A00714",
+    value: "A00714"
+}, {
+    text: "A00715",
+    value: "A00715"
+}, {
+    text: "A00716",
+    value: "A00716"
+}, {
+    text: "A00717",
+    value: "A00717"
+}, {
+    text: "A00718",
+    value: "A00718"
+}, {
+    text: "A00719",
+    value: "A00719"
+}, {
+    text: "A00720",
+    value: "A00720"
+}, {
+    text: "A00721",
+    value: "A00721"
+}, {
+    text: "A00722",
+    value: "A00722"
+}, {
+    text: "A00723",
+    value: "A00723"
+}, {
+    text: "A00724",
+    value: "A00724"
+}, {
+    text: "A00725",
+    value: "A00725"
+}, {
+    text: "A00726",
+    value: "A00726"
+}, {
+    text: "A00727",
+    value: "A00727"
+}, {
+    text: "A00728",
+    value: "A00728"
+}, {
+    text: "A00729",
+    value: "A00729"
+}, {
+    text: "A00730",
+    value: "A00730"
+}, {
+    text: "A00731",
+    value: "A00731"
+}, {
+    text: "A00732",
+    value: "A00732"
+}, {
+    text: "A00733",
+    value: "A00733"
+}, {
+    text: "A00734",
+    value: "A00734"
+}, {
+    text: "A00735",
+    value: "A00735"
+}, {
+    text: "A00736",
+    value: "A00736"
+}, {
+    text: "A00737",
+    value: "A00737"
+}, {
+    text: "A00738",
+    value: "A00738"
+}, {
+    text: "A00739",
+    value: "A00739"
+}, {
+    text: "A00740",
+    value: "A00740"
+}, {
+    text: "A00741",
+    value: "A00741"
+}, {
+    text: "A00742",
+    value: "A00742"
+}, {
+    text: "A00743",
+    value: "A00743"
+}, {
+    text: "A00744",
+    value: "A00744"
+}, {
+    text: "A00745",
+    value: "A00745"
+}, {
+    text: "A00746",
+    value: "A00746"
+}, {
+    text: "A00747",
+    value: "A00747"
+}, {
+    text: "A00748",
+    value: "A00748"
+}, {
+    text: "A00749",
+    value: "A00749"
+}, {
+    text: "A00750",
+    value: "A00750"
+}, {
+    text: "A00751",
+    value: "A00751"
+}, {
+    text: "A00752",
+    value: "A00752"
+}, {
+    text: "A00753",
+    value: "A00753"
+}, {
+    text: "A00754",
+    value: "A00754"
+}, {
+    text: "A00755",
+    value: "A00755"
+}, {
+    text: "A00756",
+    value: "A00756"
+}, {
+    text: "A00757",
+    value: "A00757"
+}, {
+    text: "A00758",
+    value: "A00758"
+}, {
+    text: "A00759",
+    value: "A00759"
+}, {
+    text: "A00760",
+    value: "A00760"
+}, {
+    text: "A00761",
+    value: "A00761"
+}, {
+    text: "A00762",
+    value: "A00762"
+}, {
+    text: "A00763",
+    value: "A00763"
+}, {
+    text: "A00764",
+    value: "A00764"
+}, {
+    text: "A00765",
+    value: "A00765"
+}, {
+    text: "A00766",
+    value: "A00766"
+}, {
+    text: "A00767",
+    value: "A00767"
+}, {
+    text: "A00768",
+    value: "A00768"
+}, {
+    text: "A00769",
+    value: "A00769"
+}, {
+    text: "A00770",
+    value: "A00770"
+}, {
+    text: "A00771",
+    value: "A00771"
+}, {
+    text: "A00772",
+    value: "A00772"
+}, {
+    text: "A00773",
+    value: "A00773"
+}, {
+    text: "A00774",
+    value: "A00774"
+}, {
+    text: "A00775",
+    value: "A00775"
+}, {
+    text: "A00776",
+    value: "A00776"
+}, {
+    text: "A00777",
+    value: "A00777"
+}, {
+    text: "A00778",
+    value: "A00778"
+}, {
+    text: "A00779",
+    value: "A00779"
+}, {
+    text: "A00780",
+    value: "A00780"
+}, {
+    text: "A00781",
+    value: "A00781"
+}, {
+    text: "A00782",
+    value: "A00782"
+}, {
+    text: "A00783",
+    value: "A00783"
+}, {
+    text: "A00784",
+    value: "A00784"
+}, {
+    text: "A00785",
+    value: "A00785"
+}, {
+    text: "A00786",
+    value: "A00786"
+}, {
+    text: "A00787",
+    value: "A00787"
+}, {
+    text: "A00788",
+    value: "A00788"
+}, {
+    text: "A00789",
+    value: "A00789"
+}, {
+    text: "A00790",
+    value: "A00790"
+}, {
+    text: "A00791",
+    value: "A00791"
+}, {
+    text: "A00792",
+    value: "A00792"
+}, {
+    text: "A00793",
+    value: "A00793"
+}, {
+    text: "A00794",
+    value: "A00794"
+}, {
+    text: "A00795",
+    value: "A00795"
+}, {
+    text: "A00796",
+    value: "A00796"
+}, {
+    text: "A00797",
+    value: "A00797"
+}, {
+    text: "A00798",
+    value: "A00798"
+}, {
+    text: "A00799",
+    value: "A00799"
+}, {
+    text: "A00800",
+    value: "A00800"
+}, {
+    text: "A00801",
+    value: "A00801"
+}, {
+    text: "A00802",
+    value: "A00802"
+}, {
+    text: "A00803",
+    value: "A00803"
+}, {
+    text: "A00804",
+    value: "A00804"
+}, {
+    text: "A00805",
+    value: "A00805"
+}, {
+    text: "A00806",
+    value: "A00806"
+}, {
+    text: "A00807",
+    value: "A00807"
+}, {
+    text: "A00808",
+    value: "A00808"
+}, {
+    text: "A00809",
+    value: "A00809"
+}, {
+    text: "A00810",
+    value: "A00810"
+}, {
+    text: "A00811",
+    value: "A00811"
+}, {
+    text: "A00812",
+    value: "A00812"
+}, {
+    text: "A00813",
+    value: "A00813"
+}, {
+    text: "A00814",
+    value: "A00814"
+}, {
+    text: "A00815",
+    value: "A00815"
+}, {
+    text: "A00816",
+    value: "A00816"
+}, {
+    text: "A00817",
+    value: "A00817"
+}, {
+    text: "A00818",
+    value: "A00818"
+}, {
+    text: "A00819",
+    value: "A00819"
+}, {
+    text: "A00820",
+    value: "A00820"
+}, {
+    text: "A00821",
+    value: "A00821"
+}, {
+    text: "A00822",
+    value: "A00822"
+}, {
+    text: "A00823",
+    value: "A00823"
+}, {
+    text: "A00824",
+    value: "A00824"
+}, {
+    text: "A00825",
+    value: "A00825"
+}, {
+    text: "A00826",
+    value: "A00826"
+}, {
+    text: "A00827",
+    value: "A00827"
+}, {
+    text: "A00828",
+    value: "A00828"
+}, {
+    text: "A00829",
+    value: "A00829"
+}, {
+    text: "A00830",
+    value: "A00830"
+}, {
+    text: "A00831",
+    value: "A00831"
+}, {
+    text: "A00832",
+    value: "A00832"
+}, {
+    text: "A00833",
+    value: "A00833"
+}, {
+    text: "A00834",
+    value: "A00834"
+}, {
+    text: "A00835",
+    value: "A00835"
+}, {
+    text: "A00836",
+    value: "A00836"
+}, {
+    text: "A00837",
+    value: "A00837"
+}, {
+    text: "A00838",
+    value: "A00838"
+}, {
+    text: "A00839",
+    value: "A00839"
+}, {
+    text: "A00840",
+    value: "A00840"
+}, {
+    text: "A00841",
+    value: "A00841"
+}, {
+    text: "A00842",
+    value: "A00842"
+}, {
+    text: "A00843",
+    value: "A00843"
+}, {
+    text: "A00844",
+    value: "A00844"
+}, {
+    text: "A00845",
+    value: "A00845"
+}, {
+    text: "A00846",
+    value: "A00846"
+}, {
+    text: "A00847",
+    value: "A00847"
+}, {
+    text: "A00848",
+    value: "A00848"
+}, {
+    text: "A00849",
+    value: "A00849"
+}, {
+    text: "A00850",
+    value: "A00850"
+}, {
+    text: "A00851",
+    value: "A00851"
+}, {
+    text: "A00852",
+    value: "A00852"
+}, {
+    text: "A00853",
+    value: "A00853"
+}, {
+    text: "A00854",
+    value: "A00854"
+}, {
+    text: "A00855",
+    value: "A00855"
+}, {
+    text: "A00856",
+    value: "A00856"
+}, {
+    text: "A00857",
+    value: "A00857"
+}, {
+    text: "A00858",
+    value: "A00858"
+}, {
+    text: "A00859",
+    value: "A00859"
+}, {
+    text: "A00860",
+    value: "A00860"
+}, {
+    text: "A00861",
+    value: "A00861"
+}, {
+    text: "A00862",
+    value: "A00862"
+}, {
+    text: "A00863",
+    value: "A00863"
+}, {
+    text: "A00864",
+    value: "A00864"
+}, {
+    text: "A00865",
+    value: "A00865"
+}, {
+    text: "A00866",
+    value: "A00866"
+}, {
+    text: "A00867",
+    value: "A00867"
+}, {
+    text: "A00868",
+    value: "A00868"
+}, {
+    text: "A00869",
+    value: "A00869"
+}, {
+    text: "A00870",
+    value: "A00870"
+}, {
+    text: "A00871",
+    value: "A00871"
+}, {
+    text: "A00872",
+    value: "A00872"
+}, {
+    text: "A00873",
+    value: "A00873"
+}, {
+    text: "A00874",
+    value: "A00874"
+}, {
+    text: "A00875",
+    value: "A00875"
+}, {
+    text: "A00876",
+    value: "A00876"
+}, {
+    text: "A00877",
+    value: "A00877"
+}, {
+    text: "A00878",
+    value: "A00878"
+}, {
+    text: "A00879",
+    value: "A00879"
+}, {
+    text: "A00880",
+    value: "A00880"
+}, {
+    text: "A00881",
+    value: "A00881"
+}, {
+    text: "A00882",
+    value: "A00882"
+}, {
+    text: "A00883",
+    value: "A00883"
+}, {
+    text: "A00884",
+    value: "A00884"
+}, {
+    text: "A00885",
+    value: "A00885"
+}, {
+    text: "A00886",
+    value: "A00886"
+}, {
+    text: "A00887",
+    value: "A00887"
+}, {
+    text: "A00888",
+    value: "A00888"
+}, {
+    text: "A00889",
+    value: "A00889"
+}, {
+    text: "A00890",
+    value: "A00890"
+}, {
+    text: "A00891",
+    value: "A00891"
+}, {
+    text: "A00892",
+    value: "A00892"
+}, {
+    text: "A00893",
+    value: "A00893"
+}, {
+    text: "A00894",
+    value: "A00894"
+}, {
+    text: "A00895",
+    value: "A00895"
+}, {
+    text: "A00896",
+    value: "A00896"
+}, {
+    text: "A00897",
+    value: "A00897"
+}, {
+    text: "A00898",
+    value: "A00898"
+}, {
+    text: "A00899",
+    value: "A00899"
+}, {
+    text: "A00900",
+    value: "A00900"
+}, {
+    text: "A00901",
+    value: "A00901"
+}, {
+    text: "A00902",
+    value: "A00902"
+}, {
+    text: "A00903",
+    value: "A00903"
+}, {
+    text: "A00904",
+    value: "A00904"
+}, {
+    text: "A00905",
+    value: "A00905"
+}, {
+    text: "A00906",
+    value: "A00906"
+}, {
+    text: "A00907",
+    value: "A00907"
+}, {
+    text: "A00908",
+    value: "A00908"
+}, {
+    text: "A00909",
+    value: "A00909"
+}, {
+    text: "A00910",
+    value: "A00910"
+}, {
+    text: "A00911",
+    value: "A00911"
+}, {
+    text: "A00912",
+    value: "A00912"
+}, {
+    text: "A00913",
+    value: "A00913"
+}, {
+    text: "A00914",
+    value: "A00914"
+}, {
+    text: "A00915",
+    value: "A00915"
+}, {
+    text: "A00916",
+    value: "A00916"
+}, {
+    text: "A00917",
+    value: "A00917"
+}, {
+    text: "A00918",
+    value: "A00918"
+}, {
+    text: "A00919",
+    value: "A00919"
+}, {
+    text: "A00920",
+    value: "A00920"
+}, {
+    text: "A00921",
+    value: "A00921"
+}, {
+    text: "A00922",
+    value: "A00922"
+}, {
+    text: "A00923",
+    value: "A00923"
+}, {
+    text: "A00924",
+    value: "A00924"
+}, {
+    text: "A00925",
+    value: "A00925"
+}, {
+    text: "A00926",
+    value: "A00926"
+}, {
+    text: "A00927",
+    value: "A00927"
+}, {
+    text: "A00928",
+    value: "A00928"
+}, {
+    text: "A00929",
+    value: "A00929"
+}, {
+    text: "A00930",
+    value: "A00930"
+}, {
+    text: "A00931",
+    value: "A00931"
+}, {
+    text: "A00932",
+    value: "A00932"
+}, {
+    text: "A00933",
+    value: "A00933"
+}, {
+    text: "A00934",
+    value: "A00934"
+}, {
+    text: "A00935",
+    value: "A00935"
+}, {
+    text: "A00936",
+    value: "A00936"
+}, {
+    text: "A00937",
+    value: "A00937"
+}, {
+    text: "A00938",
+    value: "A00938"
+}, {
+    text: "A00939",
+    value: "A00939"
+}, {
+    text: "A00940",
+    value: "A00940"
+}, {
+    text: "A00941",
+    value: "A00941"
+}, {
+    text: "A00942",
+    value: "A00942"
+}, {
+    text: "A00943",
+    value: "A00943"
+}, {
+    text: "A00944",
+    value: "A00944"
+}, {
+    text: "A00945",
+    value: "A00945"
+}, {
+    text: "A00946",
+    value: "A00946"
+}, {
+    text: "A00947",
+    value: "A00947"
+}, {
+    text: "A00948",
+    value: "A00948"
+}, {
+    text: "A00949",
+    value: "A00949"
+}, {
+    text: "A00950",
+    value: "A00950"
+}, {
+    text: "A00951",
+    value: "A00951"
+}, {
+    text: "A00952",
+    value: "A00952"
+}, {
+    text: "A00953",
+    value: "A00953"
+}, {
+    text: "A00954",
+    value: "A00954"
+}, {
+    text: "A00955",
+    value: "A00955"
+}, {
+    text: "A00956",
+    value: "A00956"
+}, {
+    text: "A00957",
+    value: "A00957"
+}, {
+    text: "A00958",
+    value: "A00958"
+}, {
+    text: "A00959",
+    value: "A00959"
+}, {
+    text: "A00960",
+    value: "A00960"
+}, {
+    text: "A00961",
+    value: "A00961"
+}, {
+    text: "A00962",
+    value: "A00962"
+}, {
+    text: "A00963",
+    value: "A00963"
+}, {
+    text: "A00964",
+    value: "A00964"
+}, {
+    text: "A00965",
+    value: "A00965"
+}, {
+    text: "A00966",
+    value: "A00966"
+}, {
+    text: "A00967",
+    value: "A00967"
+}, {
+    text: "A00968",
+    value: "A00968"
+}, {
+    text: "A00969",
+    value: "A00969"
+}, {
+    text: "A00970",
+    value: "A00970"
+}, {
+    text: "A00971",
+    value: "A00971"
+}, {
+    text: "A00972",
+    value: "A00972"
+}, {
+    text: "A00973",
+    value: "A00973"
+}, {
+    text: "A00974",
+    value: "A00974"
+}, {
+    text: "A00975",
+    value: "A00975"
+}, {
+    text: "A00976",
+    value: "A00976"
+}, {
+    text: "A00977",
+    value: "A00977"
+}, {
+    text: "A00978",
+    value: "A00978"
+}, {
+    text: "A00979",
+    value: "A00979"
+}, {
+    text: "A00980",
+    value: "A00980"
+}, {
+    text: "A00981",
+    value: "A00981"
+}, {
+    text: "A00982",
+    value: "A00982"
+}, {
+    text: "A00983",
+    value: "A00983"
+}, {
+    text: "A00984",
+    value: "A00984"
+}, {
+    text: "A00985",
+    value: "A00985"
+}, {
+    text: "A00986",
+    value: "A00986"
+}, {
+    text: "A00987",
+    value: "A00987"
+}, {
+    text: "A00988",
+    value: "A00988"
+}, {
+    text: "A00989",
+    value: "A00989"
+}, {
+    text: "A00990",
+    value: "A00990"
+}, {
+    text: "A00991",
+    value: "A00991"
+}, {
+    text: "A00992",
+    value: "A00992"
+}, {
+    text: "A00993",
+    value: "A00993"
+}, {
+    text: "A00994",
+    value: "A00994"
+}, {
+    text: "A00995",
+    value: "A00995"
+}, {
+    text: "A00996",
+    value: "A00996"
+}];
+
+module.exports = itemValue;

@@ -43,7 +43,7 @@
                     </div>
                     </ValidationProvider>
 
-                    <ValidationProvider name="unit amount" :rules="`required|min:1|max:10|greaterThanZero:${newItem.rate}`"">
+                    <ValidationProvider name="unit amount" :rules="`required|min:1|max:10|greaterThanZero:${newItem.rate}`">
                         <div slot-scope="{ errors }">
                     <div class="form-group">
                         <label>Rate:</label>
@@ -103,6 +103,7 @@
 
 
     import { db } from '../../config/db';
+    import { itemValue } from '../../config/value';
     import { ValidationProvider,ValidationObserver } from 'vee-validate';
 
     export default {
@@ -127,35 +128,7 @@
                     expiryDate: ''
                 },
                 options: [],
-                codeOptions: [
-                    { value: null, text: 'Please select an option' },
-                    { value: 'A001', text: 'A001' },
-                    { value: 'A002', text: 'A002' },
-                    { value: 'A003', text: 'A003' },
-                    { value: 'A004', text: 'A004' },
-                    { value: 'A005', text: 'A005' },
-                    { value: 'A006', text: 'A006' },
-                    { value: 'A007', text: 'A007' },
-                    { value: 'A008', text: 'A008' },
-                    { value: 'A009', text: 'A009' },
-                    { value: 'A0010', text: 'A0010' },
-                    { value: 'A0011', text: 'A0011' },
-                    { value: 'A0012', text: 'A0012' },
-                    { value: 'A0013', text: 'A0013' },
-                    { value: 'A0014', text: 'A0014' },
-                    { value: 'A0015', text: 'A0015' },
-                    { value: 'A0016', text: 'A0016' },
-                    { value: 'A0017', text: 'A0017' },
-                    { value: 'A0018', text: 'A0018' },
-                    { value: 'A0019', text: 'A0019' },
-                    { value: 'A0020', text: 'A0020' },
-                    { value: 'A0021', text: 'A0021' },
-                    { value: 'A0022', text: 'A0022' },
-                    { value: 'A0023', text: 'A0023' },
-                    { value: 'A0024', text: 'A0024' },
-                    { value: 'A0025', text: 'A0025' },
-                    { value: 'A0026', text: 'A0026' },
-                ],
+                codeOptions: itemValue
             }
         },
 
